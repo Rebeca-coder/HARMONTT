@@ -1,0 +1,44 @@
+a{
+text-decoration: none;
+color: rgb(242, 239, 239);
+padding: 10px;
+font-family: georgia
+
+
+}
+.relacionar{
+background: rgb(70,50,100);
+padding: 20px;
+text-align: right;
+
+}
+body{
+    margin: 0;
+
+}
+.presentacion{
+background: #dae0bf;
+text-align: left;
+padding: 87px;px
+
+}
+h1{
+    text-align: left;
+    width: 40%;
+
+}
+p {
+    margin-top: 0;
+    width: 60%;
+    text-align: justify;
+}
+h3{
+color: rgb(155, 157, 159);
+font-size: smaller;
+margin-top: 1px;
+margin-left: 10px;
+}
+h2 {
+margin-bottom:0;
+margin-left: 10px;
+}
