@@ -1,44 +1,153 @@
-a{
-text-decoration: none;
-color: rgb(242, 239, 239);
-padding: 10px;
-font-family: georgia
-
-
+*{
+    box-sizing: border-box;
 }
-.relacionar{
-background: rgb(70,50,100);
-padding: 20px;
-text-align: right;
-
+html{
+    scroll-behavior: smooth;
 }
-body{
-    margin: 0;
-
+h1 {
+    font-size:3.5em;
 }
-.presentacion{
-background: #dae0bf;
-text-align: left;
-padding: 87px;px
-
+h2{
+    font-size:2.5em;
 }
-h1{
-    text-align: left;
-    width: 40%;
-
+h3 {
+    font-size:1.5em;
 }
 p {
+    font-size:1.25em;
+}
+ul {
+    list-style:none;
+    font-size: 1.15em;
+}
+
+body {
+    margin: 0;
+    font-family:'Roboto', sans-serif;
+    background-color: #d6d1cc;
+}
+button {
+    font-size: 1.25em;
+    font-weight: bold;
+    padding:10px 30px;
+    border-radius: 5px;
+    border: 1px solid #a97c3c44;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+    background-color: #94856f;
+}
+button:hover {
+    background-color: #8a6b3a;
+}
+.contiene {
+    max-width: 800px;
+    margin:auto;
+}
+.color-acento {
+    color: #bc8413;
+    font-family: 'Yesteryear'
+
+}
+
+header{
+    background-color: #d6d1cc;
+}
+header .logo{
+    margin: 0px;
+    padding:8px 8px;
+    font-weight:bold;
+    color:#a97c3c;
+    font-size: 3.5em;
+    text-align:center;
+    font-family: 'Yesteryear';
+
+}
+header .contiene{
+
+display: flex;
+flex-direction:column; 
+align-items:center;
+
+}
+
+header .nav {
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+
+}
+header a {
+    text-decoration:none;
+    font-weight:bold;
+    color:#765911e6;
+    font-size: 1.25em;
+    padding: 0px 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: 'Lobster';
+}
+
+header a:hover{
+    color:#bca78f;
+
+}
+#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height:90vh;
+    color: white;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imagenes/966-9667187_how-we-work-entrada-de-trabajo-dibujo.png.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+#hero h1 {
+    color:azure;
+}
+#somos-proya {
+
+}
+#somos-harm .contiene {
+    text-align: center;
+    padding: 200px 12px;
+
+}
+#plan-harmont {
+    background-color: #a28e79;
+    color: white;
+    text-align: center;
+}
+#plan-harmont .contiene {
+    text-align: center;
+    padding: 150px 10px
+}
+#plan-harmont h2 {
     margin-top: 0;
-    width: 60%;
-    text-align: justify;
 }
-h3{
-color: rgb(155, 157, 159);
-font-size: smaller;
-margin-top: 1px;
-margin-left: 10px;
+#plan-harmont p {
+    display:none;
 }
-h2 {
-margin-bottom:0;
-margin-left: 10px;
+#plan-harmont .carta {
+
 }
+
+
+.carta:first-child {
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imagenes/295636.png');
+background-size: cover;
+background-position: center center;
+}
+.carta:nth-child(2) {
+background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imagenes/images-2.png');
+background-size: cover;
+background-position: center center;
+}
+.carta:nth-child(3) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('imagenes/images.png');
+background-size: cover;
+background-position: center center;
+}
+
