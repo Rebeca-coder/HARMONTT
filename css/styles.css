@@ -1,0 +1,128 @@
+:root{
+    --espresso:#3b2a20;
+    --mocha:#8a6a55;
+    --latte:#c9a98a;
+    --crema:#fbf6f0;
+    --arena:#eadfd3;
+    --fondo:#d8c4ae;
+    --texto:#2e211a;
+    --radio:24px;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box
+}
+body{
+    font-family:"Urbanist","Segoe UI",Arial,sans-serif;
+    background:var(--fondo);
+    color:var(--texto);
+    line-height:1.6}
+a{
+    color:inherit
+}
+:focus-visible{
+    outline:3px solid var(--latte);
+    outline-offset:3px
+}
+img{
+    max-width:100%
+}
+[hidden]{display:none!important}
+
+/* Página en "hoja" sobre fondo arena */
+.pagina{
+    max-width:1200px;
+    margin:0 auto;
+    background:var(--crema);
+    padding:1rem 1rem 0
+}
+@media(min-width:768px){
+    .pagina{
+        margin:1.5rem auto;
+        border-radius:32px;
+        padding:1.25rem 1.25rem 0
+    }
+}
+
+/* Encabezado */
+.cabecera{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:1rem 2rem;
+    padding:.25rem .5rem 1rem
+}
+.logo{
+    font-weight:800;
+    font-size:1.6rem;
+    letter-spacing:.06em;
+    text-decoration:none;
+    color:var(--espresso)
+}
+.cabecera nav{display:flex;flex-wrap:wrap;gap:1.25rem;font-size:.9rem;font-weight:600;margin-right:auto}
+.cabecera nav a{text-decoration:none}.cabecera nav a:hover{text-decoration:underline}
+
+/* Botones en forma de píldora */
+.pildora,.boton{display:inline-block;background:var(--espresso);color:#fff;font:700 .9rem "Urbanist",sans-serif;padding:.65rem 1.4rem;border:2px solid var(--espresso);border-radius:999px;text-decoration:none;cursor:pointer}
+.pildora:hover,.boton:hover{background:#523b2d}
+.pildora.clara{background:#fff;color:var(--espresso);border-color:#fff}
+.pildora.borde{background:transparent;color:#fff;border-color:#fff}
+.boton.peligro{background:#9b2c2c;border-color:#9b2c2c;padding:.3rem .9rem}
+
+/* Portada */
+.hero{border-radius:var(--radio);overflow:hidden;min-height:460px;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 1.5rem;color:#fff;
+ background:linear-gradient(90deg,rgba(59,42,32,.65),rgba(59,42,32,.1)),url("../img/hero.jpg") center/cover,linear-gradient(135deg,#4a3123,#a47551 60%,#d9b48a)}
+.hero h1{font-size:clamp(3rem,15vw,9rem);font-weight:800;letter-spacing:-.02em;line-height:.95;margin-bottom:1rem}
+.hero p{max-width:460px;margin-bottom:1.25rem}
+.botones{display:flex;flex-wrap:wrap;gap:.75rem}
+
+/* Secciones */
+.seccion{
+    padding:3rem .5rem
+}
+.seccion h1,.seccion h2{
+    font-size:1.7rem;
+    line-height:1.2;
+    margin-bottom:.75rem
+}
+.por-que{
+    display:grid;
+    gap:2rem
+}
+.tres{display:grid;gap:1rem}
+.dato-card{background:var(--mocha);color:#fff;border-radius:20px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start}
+.icono{flex:none;width:64px;height:64px;border-radius:14px;background:var(--crema);display:grid;place-items:center;font-size:1.8rem}
+.dato-card h3{font-size:1.05rem;margin-bottom:.25rem}.dato-card p{font-size:.88rem}
+.stats{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:1.5rem}
+.stats div{min-width:110px}.stats strong{display:block;font-size:1.7rem;color:var(--espresso);line-height:1.2}.stats span{font-size:.85rem}
+
+/* Proyectos (catálogo y destacados) */
+.contenedor-arena{background:var(--arena);border-radius:var(--radio);padding:2rem 1.25rem;margin:1rem 0}
+.encabezado{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+.encabezado h2{margin:0}.encabezado p{max-width:420px;font-size:.92rem}
+.proyectos{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1.5rem}
+.proyectos article{background:#fff;border-radius:20px;padding:0 1.25rem 1.25rem;overflow:hidden;box-shadow:0 2px 10px rgba(59,42,32,.1)}
+.proyectos article::before{content:"";display:block;height:130px;margin:0 -1.25rem 1rem;background:linear-gradient(135deg,#5c3d2e,#b98b63)}
+.proyectos article:nth-child(4n+2)::before{background:linear-gradient(135deg,#7a5a45,#d9b48a)}
+.proyectos article:nth-child(4n+3)::before{background:linear-gradient(135deg,#3b2a20,#8a6a55)}
+.proyectos article:nth-child(4n)::before{background:linear-gradient(135deg,#a47551,#ead2b4)}
+.proyectos h3{font-size:1.1rem;margin-bottom:.25rem}
+.proyectos p{font-size:.9rem}.proyectos small{color:var(--mocha);font-weight:700}
+
+/* Para empresas */
+.empresas{
+    display:grid;
+    gap:1rem}
+.bloque{border-radius:var(--radio);padding:1.75rem;color:#fff;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem}
+.bloque h3{font-size:1.25rem}.bloque p{font-size:.9rem}
+.bloque.principal{background:var(--mocha);justify-content:space-between;align-items:flex-start}
+.bloque.a{background:linear-gradient(0deg,rgba(59,42,32,.85),rgba(59,42,32,.1)),url("../img/empresa-1.jpg") center/cover,linear-gradient(135deg,#5c3d2e,#b98b63)}
+.bloque.b{background:linear-gradient(0deg,rgba(59,42,32,.85),rgba(59,42,32,.1)),url("../img/empresa-2.jpg") center/cover,linear-gradient(135deg,#3b2a20,#a47551)}
+
+/* Cómo funciona */
+.pasos{display:grid;gap:1rem;list-style:none}
+.pasos li{background:var(--arena);border-radius:20px;padding:1.25rem}
+.pasos b{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:2px solid var(--espresso);margin-bottom:.75rem}
+.pasos h3{font-size:1.05rem}.pasos p{font-size:.9rem}
+
