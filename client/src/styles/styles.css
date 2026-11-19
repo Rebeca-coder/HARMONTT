@@ -1130,26 +1130,40 @@ textarea {
     }
 
     .hero-imagen {
-        height: 540px;
+        height: 560px;
     }
 
     .hero-titulo {
-        top: 10%;
-        font-size: clamp(3.4rem, 18vw, 6rem);
+        top: 8%;
+        left: 50%;
+        width: 100%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: clamp(2.6rem, 14vw, 4.5rem);
     }
 
     .hero-titular {
-        bottom: 22%;
-        font-size: 1.05rem;
+        left: 50%;
+        bottom: 27%;
+        width: calc(100% - 48px);
+        max-width: 340px;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 1rem;
     }
 
     .hero-texto {
-        top: 50%;
+        top: 46%;
+        width: calc(100% - 56px);
         font-size: 0.85rem;
     }
 
     .hero-accion {
-        top: 62%;
+        top: 77%;
+    }
+
+    .hero-deslizamiento {
+        display: none;
     }
 
     .hero-tarjeta {
@@ -1158,7 +1172,7 @@ textarea {
 
     .buscador {
         grid-template-columns: 1fr;
-        margin-top: -30px;
+        margin-top: 16px;
     }
 
     .campo {
@@ -1210,14 +1224,6 @@ textarea {
 }
 
 @media (max-width: 420px) {
-    .hero-imagen {
-        height: 470px;
-    }
-
-    .hero-deslizamiento {
-        display: none;
-    }
-
     .estadisticas {
         gap: 18px;
     }
