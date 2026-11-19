@@ -329,6 +329,20 @@ textarea {
 }
 
 
+/* Tarjeta flotante del hero: equilibra el texto "DESLIZA..." de la esquina izquierda. */
+.hero-tarjeta {
+    position: absolute;
+    right: 4.5%;
+    bottom: 12%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px 12px 12px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(25, 18, 12, 0.22);
+}
 
 .hero-tarjeta img {
     width: 62px;
