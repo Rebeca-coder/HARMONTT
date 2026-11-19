@@ -17,7 +17,7 @@ Harmont actúa como intermediario: revisa las propuestas de las empresas, las pu
 | Landing React + rutas + componentes | `client/` |
 | Registro/login, catálogo y contacto conectados a la API | `client/src/services/api.js` |
 | API Express + modelos + auth + flujo de proyectos/postulaciones | `server/` |
-| Paneles por rol | En construcción |
+| Paneles de estudiante, empresa y administración | `client/src/pages/Panel*.jsx` |
 | MongoDB Atlas / despliegue | Pendiente |
 
 ---
@@ -139,6 +139,7 @@ http://localhost:5173/#/contacto
 | GET | `/api/experiencias/mias` | estudiante |
 | GET/POST | `/api/experiencias` | admin |
 | POST | `/api/experiencias/:id/completar` | admin |
+| GET | `/api/proyectos/admin/lista` | admin |
 | GET | `/api/proyectos/mia/lista` | empresa |
 | POST | `/api/proyectos` | empresa verificada |
 | POST | `/api/proyectos/simulados` | admin |

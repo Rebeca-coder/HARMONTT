@@ -144,6 +144,16 @@ export const listarProyectos = asyncHandler(async (req, res) => {
     });
 });
 
+export const listarTodosParaAdmin = asyncHandler(async (req, res) => {
+    const filtro = req.query.estado ? { estado: texto(req.query.estado) } : {};
+    const proyectos = await Project.find(filtro)
+        .populate('empresa', 'nombreComercial')
+        .populate('creadoPor', 'nombre email')
+        .sort({ creadoEn: -1 });
+
+    res.json({ ok: true, total: proyectos.length, proyectos });
+});
+
 export const misProyectos = asyncHandler(async (req, res) => {
     const perfil = await perfilEmpresaDe(req.usuario._id);
     if (!perfil) {

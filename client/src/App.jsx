@@ -8,6 +8,9 @@ import Login from './pages/Login.jsx';
 import Registro from './pages/Registro.jsx';
 import RutaPrivada from './components/RutaPrivada.jsx';
 import Panel from './pages/Panel.jsx';
+import PanelEstudiante from './pages/PanelEstudiante.jsx';
+import PanelEmpresa from './pages/PanelEmpresa.jsx';
+import PanelAdmin from './pages/PanelAdmin.jsx';
 
 // HashRouter produce URLs como /#/proyectos.
 // GitHub Pages es un servidor de archivos estáticos: no sabe redirigir /proyectos,
@@ -29,6 +32,30 @@ export default function App() {
                         element={
                             <RutaPrivada>
                                 <Panel />
+                            </RutaPrivada>
+                        }
+                    />
+                    <Route
+                        path="/panel/estudiante"
+                        element={
+                            <RutaPrivada roles={['estudiante']}>
+                                <PanelEstudiante />
+                            </RutaPrivada>
+                        }
+                    />
+                    <Route
+                        path="/panel/empresa"
+                        element={
+                            <RutaPrivada roles={['empresa']}>
+                                <PanelEmpresa />
+                            </RutaPrivada>
+                        }
+                    />
+                    <Route
+                        path="/panel/admin"
+                        element={
+                            <RutaPrivada roles={['admin']}>
+                                <PanelAdmin />
                             </RutaPrivada>
                         }
                     />

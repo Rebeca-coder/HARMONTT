@@ -12,6 +12,7 @@ import {
     crearProyectoEmpresa,
     crearProyectoSimulado,
     listarProyectos,
+    listarTodosParaAdmin,
     misProyectos,
     obtenerProyecto,
     editarProyecto,
@@ -26,7 +27,14 @@ const router = Router();
 router.get('/', listarProyectos);
 router.get('/:id', obtenerProyecto);
 
-// Rutas de empresa (specific antes que '/:id' por claridad)
+// Rutas autenticadas declaradas antes que '/:id' para evitar ambigüedad.
+router.get(
+    '/admin/lista',
+    autenticar,
+    requireRol(ROLES.ADMIN),
+    requireAccion(ACCIONES.TOMAR_REVISION),
+    listarTodosParaAdmin
+);
 router.get('/mia/lista', autenticar, requireRol(ROLES.EMPRESA), misProyectos);
 
 // El admin crea los proyectos simulados; la empresa, los reales.

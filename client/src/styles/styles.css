@@ -893,6 +893,131 @@ textarea {
     color: var(--texto-suave);
 }
 
+/* 14.5 Paneles por rol */
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.panel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.panel-bloque {
+    border-top: 1px solid var(--borde);
+    padding-top: 28px;
+}
+
+.panel-bloque h2,
+.panel-formulario h2 {
+    font-family: var(--fuente-titulos);
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.panel-formulario {
+    max-width: 900px;
+}
+
+.lista-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.item-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    background: var(--cafe-palido);
+    border-radius: var(--radio-tarjeta);
+}
+
+.item-panel h3 {
+    font-family: var(--fuente-titulos);
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.item-panel p {
+    margin: 4px 0;
+}
+
+.texto-suave {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+.acciones-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.etiqueta-estado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 14px;
+    border-radius: var(--radio-pildora);
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    white-space: nowrap;
+}
+
+.estado-aprobado,
+.estado-publicado,
+.estado-seleccionada {
+    background: #e5f2e8;
+    border-color: #bcd8c4;
+    color: #276b45;
+}
+
+.estado-pendiente,
+.estado-en-revision,
+.estado-en-evaluacion-empresa {
+    background: #fff2e3;
+    border-color: #f0d0a8;
+    color: #9a5b18;
+}
+
+.estado-rechazado,
+.estado-no-seleccionada,
+.estado-no-preseleccionada {
+    background: #fae9e9;
+    border-color: #e8c1c1;
+    color: #9d2f2f;
+}
+
+.barra-progreso {
+    height: 8px;
+    margin: 14px 0;
+    border-radius: var(--radio-pildora);
+    background: var(--borde);
+    overflow: hidden;
+}
+
+.barra-progreso span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--cafe-oscuro);
+}
+
+.lista-historial {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
 /* 15. Adaptaciones responsive */
 @media (max-width: 1024px) {
     :root {
@@ -1018,8 +1143,18 @@ textarea {
     .por-que,
     .experiencia,
     .contacto,
-    .final-interna {
+    .final-interna,
+    .panel-grid {
         grid-template-columns: 1fr;
+    }
+
+    .item-panel {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+    }
+
+    .acciones-item {
+        justify-content: flex-start;
     }
 
     .experiencia-imagen img {
