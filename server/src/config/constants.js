@@ -248,6 +248,13 @@ export const ESTADOS_VISIBLES_EMPRESA = [
     'no_seleccionada',
 ];
 
+// Pesos del recomendador: suman 1. Cambiarlos aquí cambia el orden del catálogo.
+export const PESOS_RECOMENDACION = {
+    habilidades: 0.5,
+    intereses: 0.3,
+    categoria: 0.2,
+};
+
 // Campos mínimos para postularse. Experiencia previa NO aparece aquí.
 export const CAMPOS_MINIMOS_ESTUDIANTE = [
     'nombre',

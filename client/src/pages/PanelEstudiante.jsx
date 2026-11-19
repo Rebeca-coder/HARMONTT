@@ -21,6 +21,7 @@ export default function PanelEstudiante() {
     const [perfil, setPerfil] = useState(null);
     const [postulaciones, setPostulaciones] = useState([]);
     const [experiencias, setExperiencias] = useState([]);
+    const [recomendaciones, setRecomendaciones] = useState([]);
     const [formulario, setFormulario] = useState(null);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState('');
@@ -36,12 +37,14 @@ export default function PanelEstudiante() {
             api.get('/perfiles/mio'),
             api.get('/postulaciones/mias'),
             api.get('/experiencias/mias'),
+            api.get('/proyectos/recomendados?limite=3'),
         ])
-            .then(([datosPerfil, datosPostulaciones, datosExperiencias]) => {
+            .then(([datosPerfil, datosPostulaciones, datosExperiencias, datosRecomendaciones]) => {
                 if (cancelado) return;
                 setPerfil(datosPerfil);
                 setPostulaciones(datosPostulaciones.postulaciones || []);
                 setExperiencias(datosExperiencias.experiencias || []);
+                setRecomendaciones(datosRecomendaciones.recomendaciones || []);
                 setFormulario({
                     descripcion: datosPerfil.perfil.descripcion || '',
                     ubicacion: datosPerfil.perfil.ubicacion || '',
@@ -150,6 +153,37 @@ export default function PanelEstudiante() {
                             No se exige experiencia previa para empezar.
                         </p>
                     </article>
+                </div>
+            )}
+
+            {recomendaciones.length > 0 && (
+                <div className="panel-bloque">
+                    <h2>Proyectos recomendados para ti</h2>
+                    <p className="aviso">
+                        Habilidades 50%, intereses 30% y área/categoría 20%.
+                        Es una guía, no una decisión automática.
+                    </p>
+                    <div className="lista-panel">
+                        {recomendaciones.map((recomendacion) => (
+                            <article className="item-panel" key={recomendacion.id}>
+                                <div>
+                                    <h3>{recomendacion.nombre}</h3>
+                                    <p className="texto-suave">
+                                        {recomendacion.categoria} · {recomendacion.modalidad} ·{' '}
+                                        {recomendacion.empresa}
+                                    </p>
+                                    <p>{recomendacion.motivos.join(' · ')}</p>
+                                </div>
+                                <span className="etiqueta-estado">
+                                    {recomendacion.porcentaje}% de afinidad
+                                </span>
+                                <Link className="enlace-con-flecha"
+                                      to={`/proyectos/${recomendacion.id}`}>
+                                    Ver →
+                                </Link>
+                            </article>
+                        ))}
+                    </div>
                 </div>
             )}
 

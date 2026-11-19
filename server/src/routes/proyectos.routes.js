@@ -8,6 +8,7 @@ import {
     requireAccion,
     requireRol,
 } from '../middleware/auth.js';
+import { recomendadosParaEstudiante } from '../controllers/recomendaciones.controller.js';
 import {
     crearProyectoEmpresa,
     crearProyectoSimulado,
@@ -25,6 +26,15 @@ const router = Router();
 
 // Rutas públicas
 router.get('/', listarProyectos);
+
+// Declarada antes de '/:id': si no, Express trataría "recomendados" como un ID.
+router.get(
+    '/recomendados',
+    autenticar,
+    requireRol(ROLES.ESTUDIANTE),
+    recomendadosParaEstudiante
+);
+
 router.get('/:id', obtenerProyecto);
 
 // Rutas autenticadas declaradas antes que '/:id' para evitar ambigüedad.

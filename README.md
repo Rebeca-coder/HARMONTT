@@ -18,6 +18,7 @@ Harmont actúa como intermediario: revisa las propuestas de las empresas, las pu
 | Registro/login, catálogo y contacto conectados a la API | `client/src/services/api.js` |
 | API Express + modelos + auth + flujo de proyectos/postulaciones | `server/` |
 | Paneles de estudiante, empresa y administración | `client/src/pages/Panel*.jsx` |
+| Recomendador ponderado (50/30/20) | `server/src/services/recomendacionService.js` |
 | MongoDB Atlas / despliegue | Pendiente |
 
 ---
@@ -148,6 +149,7 @@ http://localhost:5173/#/contacto
 | GET/POST | `/api/experiencias` | admin |
 | POST | `/api/experiencias/:id/completar` | admin |
 | GET | `/api/proyectos/admin/lista` | admin |
+| GET | `/api/proyectos/recomendados` | estudiante |
 | GET | `/api/proyectos/mia/lista` | empresa |
 | POST | `/api/proyectos` | empresa verificada |
 | POST | `/api/proyectos/simulados` | admin |
@@ -292,9 +294,6 @@ En producción `NODE_ENV=production`, por lo que la cookie usa `secure: true`, `
 
 ## Pendiente
 
-- Conectar React con la API (registro, login, contacto, catálogo).
-- Paneles de estudiante, empresa y administrador.
-- Recomendador ponderado (habilidades 50%, intereses 30%, categoría 20%).
 - MongoDB Atlas y despliegue (GitHub Pages + servicio de backend).
 - Transacciones para el control de cupo.
 - Sustituir las fotos provisionales de `picsum.photos`.
