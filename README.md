@@ -265,6 +265,31 @@ Compilación limpia y **0 vulnerabilidades**.
 
 ---
 
+## Despliegue
+
+### Frontend en GitHub Pages
+
+El workflow `.github/workflows/deploy-frontend.yml` compila `client/` y publica `client/dist` cuando hay un push a `master`.
+
+Antes de usarlo, configura en el repositorio:
+
+- **Settings → Pages → Source:** GitHub Actions.
+- **Variables → `VITE_API_URL`:** la URL pública de la API, por ejemplo `https://harmont-api.onrender.com/api`.
+
+El workflow define automáticamente `VITE_BASE=/Harmont-Ashley-Tobar/` para que los archivos estáticos carguen correctamente.
+
+### Backend
+
+`server/render.yaml` describe un servicio web de Render:
+
+- `startCommand: npm start`.
+- `healthCheckPath: /api/salud`.
+- Variables `MONGO_URI`, `JWT_SECRET` y `CLIENT_URL` configuradas en el panel del hosting.
+
+En producción `NODE_ENV=production`, por lo que la cookie usa `secure: true`, `sameSite: 'none'` y CORS acepta credenciales desde `CLIENT_URL`.
+
+---
+
 ## Pendiente
 
 - Conectar React con la API (registro, login, contacto, catálogo).
