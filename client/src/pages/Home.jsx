@@ -6,21 +6,21 @@ import ProjectCard from '../components/ProjectCard.jsx';
 // Datos provisionales para maquetar. En la FASE 5 vendrán de la API.
 const proyectos = [
     {
-        imagen: 'https://picsum.photos/seed/harmont-proyecto-1/700/500',
+        imagen: '/img/proyecto-marketing.jpg',
         etiqueta: 'Marketing · Simulado',
         meta: '4 semanas · Remoto · Harmont selecciona',
         titulo: 'Estrategia de marketing para una marca ficticia',
         descripcion: 'Diseña una estrategia completa de lanzamiento y presenta tus entregables.',
     },
     {
-        imagen: 'https://picsum.photos/seed/harmont-proyecto-2/700/500',
+        imagen: '/img/proyecto-datos.jpg',
         etiqueta: 'Datos · Voluntario',
         meta: '6 semanas · Híbrido · Harmont selecciona',
         titulo: 'Dashboard de impacto para una organización social',
         descripcion: 'Convierte datos reales en un panel claro para medir resultados.',
     },
     {
-        imagen: 'https://picsum.photos/seed/harmont-proyecto-3/700/500',
+        imagen: '/img/proyecto-diseno.jpg',
         etiqueta: 'Diseño · Remunerado',
         meta: '3 semanas · Remoto · Harmont selecciona',
         titulo: 'Rediseño de la experiencia de usuario',
@@ -50,8 +50,8 @@ export default function Home() {
                 <div className="hero-marco">
                     <img
                         className="hero-imagen"
-                        src="https://picsum.photos/seed/harmont-hero/1800/900"
-                        alt="Paisaje natural que representa nuevas oportunidades"
+                        src="/img/hero.jpg"
+                        alt="Equipo diverso colaborando con laptops en un espacio de trabajo luminoso"
                     />
                     <div className="hero-velo" aria-hidden="true"></div>
 
@@ -81,8 +81,8 @@ export default function Home() {
 
                     <div className="hero-tarjeta">
                         <img
-                            src="https://picsum.photos/seed/harmont-miniatura/240/240"
-                            alt="Miniatura de un proyecto destacado"
+                            src="/img/miniatura.jpg"
+                            alt="Detalle de una persona tomando notas en un proyecto"
                         />
                         <div>
                             <strong>Proyecto destacado</strong>
@@ -213,8 +213,8 @@ export default function Home() {
 
                 <div className="experiencia-imagen">
                     <img
-                        src="https://picsum.photos/seed/harmont-experiencia/1000/1200"
-                        alt="Persona trabajando en un proyecto colaborativo"
+                        src="/img/experiencia.jpg"
+                        alt="Joven profesional sentada con luz natural en una oficina"
                     />
                     <div className="etiqueta-flotante">
                         <strong>Proyecto destacado</strong>

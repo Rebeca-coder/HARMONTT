@@ -299,6 +299,7 @@ En producción `NODE_ENV=production`, por lo que la cookie usa `secure: true`, `
 
 - MongoDB Atlas y despliegue (GitHub Pages + servicio de backend).
 - Transacciones para el control de cupo.
-- Sustituir las fotos provisionales de `picsum.photos`.
 - Funcionalidades fuera de esta versión: chat, videollamadas, pagos, suscripciones, notificaciones avanzadas, app móvil.
+
+Las fotos están guardadas localmente en `client/public/img/` y `maquetas/img/`, procedentes de Pexels.
 # Harmont_Ashley-Tobar

@@ -7,7 +7,7 @@ import { api } from '../services/api.js';
 function aTarjeta(proyecto) {
     return {
         id: proyecto.id,
-        imagen: proyecto.imagen || 'https://picsum.photos/seed/harmont-proyecto/700/500',
+        imagen: proyecto.imagen || '/img/proyecto-marketing.jpg',
         etiqueta: `${proyecto.categoria} · ${proyecto.origen === 'simulado' ? 'Simulado' : proyecto.tipoEconomico}`,
         meta: `${proyecto.duracionSemanas || '—'} semanas · ${proyecto.modalidad} · ${proyecto.empresa}`,
         titulo: proyecto.nombre,
