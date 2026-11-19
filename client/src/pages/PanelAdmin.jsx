@@ -17,6 +17,7 @@ const formularioInicial = {
 };
 
 const convertirLista = (valor) => valor.split(',').map((parte) => parte.trim()).filter(Boolean);
+const idDe = (valor) => (valor && typeof valor === 'object' ? valor._id : valor);
 
 export default function PanelAdmin() {
     const { usuario } = useAuth();
@@ -94,6 +95,18 @@ export default function PanelAdmin() {
             `/postulaciones/${id}/${accion}`,
             undefined,
             `Postulación ${accion.replaceAll('-', ' ')}.`
+        );
+    };
+
+    const registrarExperiencia = (postulacion) => {
+        ejecutar(
+            '/experiencias',
+            {
+                estudiante: idDe(postulacion.estudiante),
+                proyecto: idDe(postulacion.proyecto),
+                funcion: 'Participante del proyecto',
+            },
+            'Experiencia registrada para el estudiante.'
         );
     };
 
@@ -304,6 +317,12 @@ export default function PanelAdmin() {
                                         <button className="pildora pildora-pequena" type="button"
                                                 onClick={() => accionPostulacion(postulacion._id, 'compartir')}>
                                             Compartir con empresa
+                                        </button>
+                                    )}
+                                    {postulacion.estado === 'seleccionada' && (
+                                        <button className="pildora pildora-pequena" type="button"
+                                                onClick={() => registrarExperiencia(postulacion)}>
+                                            Registrar experiencia
                                         </button>
                                     )}
                                     <button className="pildora pildora-pequena" type="button"
