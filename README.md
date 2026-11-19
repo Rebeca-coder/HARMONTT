@@ -301,3 +301,4 @@ En producción `NODE_ENV=production`, por lo que la cookie usa `secure: true`, `
 - Transacciones para el control de cupo.
 - Sustituir las fotos provisionales de `picsum.photos`.
 - Funcionalidades fuera de esta versión: chat, videollamadas, pagos, suscripciones, notificaciones avanzadas, app móvil.
+# Harmont_Ashley-Tobar
