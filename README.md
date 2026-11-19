@@ -291,7 +291,7 @@ El workflow define automáticamente `VITE_BASE=/HARMONTT/` para que los archivos
 - `healthCheckPath: /api/salud`.
 - Variables `MONGO_URI`, `JWT_SECRET` y `CLIENT_URL` configuradas en el panel del hosting.
 
-En producción `NODE_ENV=production`, por lo que la cookie usa `secure: true`, `sameSite: 'none'` y CORS acepta credenciales desde `CLIENT_URL`.
+En producción `NODE_ENV=production`, por lo que la cookie usa `secure: true`, `sameSite: 'none'` y CORS acepta credenciales desde `CLIENT_URL`. En GitHub Pages, `CLIENT_URL` debe ser solo `https://rebeca-coder.github.io`, sin `/HARMONTT/`: el navegador envía el `Origin` sin la ruta y `cors` compara la cadena exacta.
 
 ---
 
