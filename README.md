@@ -260,7 +260,7 @@ El porcentaje de perfil **se calcula** (`perfilService.js`), no se guarda.
 cd server && npm test
 ```
 
-Actualmente: **46 pruebas, 46 en verde**. Cubren permisos, transiciones, cupo, filtros de visibilidad, verificación de empresas, recomendador, paginación, respuestas de error, validación de modelos y escapado del buscador.
+Actualmente: **48 pruebas, 48 en verde**. Cubren permisos, transiciones, cupo, filtros de visibilidad, verificación de empresas, recomendador, paginación, respuestas de error, validación de modelos, auditoría y escapado del buscador.
 
 ```bash
 cd client && npm run build && npm audit
