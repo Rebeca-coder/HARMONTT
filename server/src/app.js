@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
@@ -9,7 +10,8 @@ import proyectosRoutes from './routes/proyectos.routes.js';
 import postulacionesRoutes from './routes/postulaciones.routes.js';
 import perfilesRoutes from './routes/perfiles.routes.js';
 import experienciasRoutes from './routes/experiencias.routes.js';
-import { manejarErrores } from './utils/apiError.js';
+import { ApiError, manejarErrores } from './utils/apiError.js';
+import { asyncHandler } from './utils/asyncHandler.js';
 
 const app = express();
 
@@ -25,6 +27,15 @@ app.use(cookieParser());
 app.get('/api/salud', (req, res) => {
     res.json({ ok: true, servicio: 'harmont-api' });
 });
+
+// Liveness (arriba) vs readiness (aquí): este endpoint sí exige MongoDB.
+app.get('/api/salud/base', asyncHandler(async (req, res) => {
+    if (mongoose.connection.readyState !== 1) {
+        throw new ApiError(503, 'Base de datos no conectada');
+    }
+    await mongoose.connection.db.admin().ping();
+    res.json({ ok: true, base: 'conectada' });
+}));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/contacto', contactoRoutes);

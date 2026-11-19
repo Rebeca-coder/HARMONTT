@@ -4,6 +4,8 @@ export class ApiError extends Error {
         super(mensaje);
         this.name = 'ApiError';
         this.status = status;
+        // Express usa 'message'; nuestra API responde con 'mensaje'. Guardamos ambos.
+        this.mensaje = mensaje;
         this.detalles = detalles;
     }
 }
@@ -16,6 +18,10 @@ export function manejarErrores(error, req, res, next) {
             mensaje: error.mensaje,
             ...(error.detalles ? { detalles: error.detalles } : {}),
         });
+    }
+
+    if (error.name === 'CastError') {
+        return res.status(400).json({ ok: false, mensaje: 'Identificador no válido' });
     }
 
     if (error.name === 'ValidationError') {

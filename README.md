@@ -73,6 +73,7 @@ npm install
 npm run dev        # node --watch, reinicia al cambiar archivos
 npm start          # forma de producción
 npm test           # pruebas sin base de datos
+npm run verificar:db  # comprueba URI, credenciales e IP autorizada
 ```
 
 Para crear la primera cuenta de administración (el registro público no permite hacerlo):
@@ -129,6 +130,7 @@ http://localhost:5173/#/contacto
 | Método | Ruta | Descripción |
 |---|---|---|
 | GET | `/api/salud` | Comprobación de vida |
+| GET | `/api/salud/base` | Comprobación de MongoDB (503 si no conecta) |
 | GET | `/api/proyectos` | Catálogo: `q`, `categoria`, `modalidad`, `origen`, `tipoEconomico` |
 | GET | `/api/proyectos/:id` | Detalle |
 | POST | `/api/auth/registro` | Registro de estudiante o empresa |
@@ -257,7 +259,7 @@ El porcentaje de perfil **se calcula** (`perfilService.js`), no se guarda.
 cd server && npm test
 ```
 
-Actualmente: **36 pruebas, 36 en verde**. Cubren permisos, transiciones, cupo, filtros de visibilidad, verificación de empresas, validación de modelos y escapado del buscador.
+Actualmente: **43 pruebas, 43 en verde**. Cubren permisos, transiciones, cupo, filtros de visibilidad, verificación de empresas, recomendador, respuestas de error, validación de modelos y escapado del buscador.
 
 ```bash
 cd client && npm run build && npm audit
