@@ -384,6 +384,11 @@ textarea {
     box-shadow: var(--sombra);
 }
 
+/* En el catálogo el buscador va debajo del título: no debe solaparlo como en el hero. */
+.portada-interna + .buscador {
+    margin-top: 32px;
+}
+
 .campo {
     display: flex;
     flex-direction: column;
