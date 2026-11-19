@@ -74,6 +74,14 @@ npm start          # forma de producción
 npm test           # pruebas sin base de datos
 ```
 
+Para crear la primera cuenta de administración (el registro público no permite hacerlo):
+
+```bash
+cd server
+npm run crear:admin
+# Escribe nombre, correo y contraseña cuando el script lo pida.
+```
+
 La API queda en `http://localhost:4000`. Comprueba que responde:
 
 ```
