@@ -7,6 +7,8 @@ import authRoutes from './routes/auth.routes.js';
 import contactoRoutes from './routes/contacto.routes.js';
 import proyectosRoutes from './routes/proyectos.routes.js';
 import postulacionesRoutes from './routes/postulaciones.routes.js';
+import perfilesRoutes from './routes/perfiles.routes.js';
+import experienciasRoutes from './routes/experiencias.routes.js';
 import { manejarErrores } from './utils/apiError.js';
 
 const app = express();
@@ -28,6 +30,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/contacto', contactoRoutes);
 app.use('/api/proyectos', proyectosRoutes);
 app.use('/api/postulaciones', postulacionesRoutes);
+app.use('/api/perfiles', perfilesRoutes);
+app.use('/api/experiencias', experienciasRoutes);
 
 app.use((req, res) => {
     res.status(404).json({ ok: false, mensaje: 'Ruta no encontrada' });

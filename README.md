@@ -132,6 +132,13 @@ http://localhost:5173/#/contacto
 | Método | Ruta | Rol |
 |---|---|---|
 | GET | `/api/auth/me` | cualquiera |
+| GET/PATCH | `/api/perfiles/mio` | estudiante o empresa |
+| GET | `/api/perfiles/empresas` | admin |
+| POST | `/api/perfiles/empresas/:id/{aprobar,rechazar}` | admin |
+| GET | `/api/perfiles/estudiantes` | admin |
+| GET | `/api/experiencias/mias` | estudiante |
+| GET/POST | `/api/experiencias` | admin |
+| POST | `/api/experiencias/:id/completar` | admin |
 | GET | `/api/proyectos/mia/lista` | empresa |
 | POST | `/api/proyectos` | empresa verificada |
 | POST | `/api/proyectos/simulados` | admin |
@@ -239,7 +246,7 @@ El porcentaje de perfil **se calcula** (`perfilService.js`), no se guarda.
 cd server && npm test
 ```
 
-Actualmente: **33 pruebas, 33 en verde**. Cubren permisos, transiciones, cupo, filtros de visibilidad, validación de modelos y escapado del buscador.
+Actualmente: **36 pruebas, 36 en verde**. Cubren permisos, transiciones, cupo, filtros de visibilidad, verificación de empresas, validación de modelos y escapado del buscador.
 
 ```bash
 cd client && npm run build && npm audit

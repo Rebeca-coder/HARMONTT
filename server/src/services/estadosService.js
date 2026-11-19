@@ -43,6 +43,18 @@ export function aplicarTransicionProyecto({ proyecto, accion, actor, motivo }) {
     return { estadoAnterior, estadoNuevo: proyecto.estado, accion };
 }
 
+export function aplicarTransicionEmpresa({ empresa, accion, actor, motivo }) {
+    const estadoAnterior = empresa.estadoVerificacion;
+    const transicion = validar('empresa', estadoAnterior, accion, actor.rol);
+
+    empresa.estadoVerificacion = transicion.hasta;
+    empresa.verificadoPor = actor._id;
+    empresa.verificadoEn = new Date();
+    empresa.motivoRechazo = accion === ACCIONES.RECHAZAR_EMPRESA ? motivo || null : null;
+
+    return { estadoAnterior, estadoNuevo: empresa.estadoVerificacion, accion };
+}
+
 export function aplicarTransicionPostulacion({
     postulacion,
     accion,

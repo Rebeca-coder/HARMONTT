@@ -81,6 +81,7 @@ export const ACCIONES = {
     RECHAZAR_EMPRESA: 'rechazar_empresa',
     VER_PERFILES_ESTUDIANTES: 'ver_perfiles_estudiantes',
     REGISTRAR_EXPERIENCIA: 'registrar_experiencia',
+    COMPLETAR_EXPERIENCIA: 'completar_experiencia',
 };
 
 // Matriz de permisos por rol. El frontend la usa para ocultar botones,
@@ -119,6 +120,7 @@ export const PERMISOS = {
         ACCIONES.RECHAZAR_EMPRESA,
         ACCIONES.VER_PERFILES_ESTUDIANTES,
         ACCIONES.REGISTRAR_EXPERIENCIA,
+        ACCIONES.COMPLETAR_EXPERIENCIA,
     ],
 };
 
@@ -172,6 +174,21 @@ export const TRANSICIONES = {
             accion: ACCIONES.ENVIAR_PROYECTO_REVISION,
             rol: ROLES.EMPRESA,
             hasta: 'pendiente_aprobacion',
+        },
+    ],
+
+    empresa: [
+        {
+            desde: 'pendiente',
+            accion: ACCIONES.APROBAR_EMPRESA,
+            rol: ROLES.ADMIN,
+            hasta: 'aprobada',
+        },
+        {
+            desde: 'pendiente',
+            accion: ACCIONES.RECHAZAR_EMPRESA,
+            rol: ROLES.ADMIN,
+            hasta: 'rechazada',
         },
     ],
 

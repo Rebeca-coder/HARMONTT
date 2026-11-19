@@ -5,6 +5,7 @@ import { ACCIONES, ROLES, ESTADOS_VISIBLES_EMPRESA } from '../src/config/constan
 import {
     aplicarTransicionProyecto,
     aplicarTransicionPostulacion,
+    aplicarTransicionEmpresa,
 } from '../src/services/estadosService.js';
 import {
     esPropietarioPostulacion,
@@ -164,4 +165,52 @@ test('el filtro de admin respeta los parámetros recibidos', () => {
     assert.equal(filtro.proyecto, proyecto);
     assert.equal(filtro.estado, 'recibida');
     assert.deepEqual(filtroPostulacionesParaAdmin({}), {});
+});
+
+test('el admin aprueba una empresa pendiente y deja quién y cuándo', () => {
+    const empresa = { estadoVerificacion: 'pendiente', verificadoPor: null, verificadoEn: null };
+    const resultado = aplicarTransicionEmpresa({
+        empresa,
+        accion: ACCIONES.APROBAR_EMPRESA,
+        actor: admin,
+    });
+
+    assert.equal(resultado.estadoNuevo, 'aprobada');
+    assert.equal(empresa.estadoVerificacion, 'aprobada');
+    assert.equal(empresa.verificadoPor.toString(), admin._id.toString());
+    assert.ok(empresa.verificadoEn instanceof Date);
+    assert.equal(empresa.motivoRechazo, null);
+});
+
+test('rechazar empresa guarda el motivo; una empresa ya aprobada no cambia', () => {
+    const empresa = { estadoVerificacion: 'pendiente', verificadoPor: null, verificadoEn: null };
+    aplicarTransicionEmpresa({
+        empresa,
+        accion: ACCIONES.RECHAZAR_EMPRESA,
+        actor: admin,
+        motivo: 'No se pudo verificar',
+    });
+
+    assert.equal(empresa.estadoVerificacion, 'rechazada');
+    assert.equal(empresa.motivoRechazo, 'No se pudo verificar');
+
+    assert.throws(
+        () => aplicarTransicionEmpresa({
+            empresa,
+            accion: ACCIONES.APROBAR_EMPRESA,
+            actor: admin,
+        }),
+        (error) => error.status === 409
+    );
+});
+
+test('la empresa no puede aprobarse a sí misma', () => {
+    assert.throws(
+        () => aplicarTransicionEmpresa({
+            empresa: { estadoVerificacion: 'pendiente' },
+            accion: ACCIONES.APROBAR_EMPRESA,
+            actor: empresa,
+        }),
+        (error) => error.status === 403
+    );
 });
