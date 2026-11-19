@@ -2,25 +2,26 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Buscador from '../components/Buscador.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
+import { rutaImagen } from '../services/imagen.js';
 
 // Datos provisionales para maquetar. En la FASE 5 vendrán de la API.
 const proyectos = [
     {
-        imagen: '/img/proyecto-marketing.jpg',
+        imagen: rutaImagen('/img/proyecto-marketing.jpg'),
         etiqueta: 'Marketing · Simulado',
         meta: '4 semanas · Remoto · Harmont selecciona',
         titulo: 'Estrategia de marketing para una marca ficticia',
         descripcion: 'Diseña una estrategia completa de lanzamiento y presenta tus entregables.',
     },
     {
-        imagen: '/img/proyecto-datos.jpg',
+        imagen: rutaImagen('/img/proyecto-datos.jpg'),
         etiqueta: 'Datos · Voluntario',
         meta: '6 semanas · Híbrido · Harmont selecciona',
         titulo: 'Dashboard de impacto para una organización social',
         descripcion: 'Convierte datos reales en un panel claro para medir resultados.',
     },
     {
-        imagen: '/img/proyecto-diseno.jpg',
+        imagen: rutaImagen('/img/proyecto-diseno.jpg'),
         etiqueta: 'Diseño · Remunerado',
         meta: '3 semanas · Remoto · Harmont selecciona',
         titulo: 'Rediseño de la experiencia de usuario',
@@ -50,7 +51,7 @@ export default function Home() {
                 <div className="hero-marco">
                     <img
                         className="hero-imagen"
-                        src="/img/hero.jpg"
+                        src={rutaImagen('/img/hero.jpg')}
                         alt="Equipo diverso colaborando con laptops en un espacio de trabajo luminoso"
                     />
                     <div className="hero-velo" aria-hidden="true"></div>
@@ -81,7 +82,7 @@ export default function Home() {
 
                     <div className="hero-tarjeta">
                         <img
-                            src="/img/miniatura.jpg"
+                            src={rutaImagen('/img/miniatura.jpg')}
                             alt="Detalle de una persona tomando notas en un proyecto"
                         />
                         <div>
@@ -213,7 +214,7 @@ export default function Home() {
 
                 <div className="experiencia-imagen">
                     <img
-                        src="/img/experiencia.jpg"
+                        src={rutaImagen('/img/experiencia.jpg')}
                         alt="Joven profesional sentada con luz natural en una oficina"
                     />
                     <div className="etiqueta-flotante">

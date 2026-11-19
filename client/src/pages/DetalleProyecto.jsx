@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../services/api.js';
 import { useAuth } from '../context/AuthContext.jsx';
+import { rutaImagen } from '../services/imagen.js';
 
 export default function DetalleProyecto() {
     const { id } = useParams();
@@ -104,7 +105,7 @@ export default function DetalleProyecto() {
                 </div>
 
                 {proyecto.imagen && (
-                    <img className="carta-imagen" src={proyecto.imagen} alt={proyecto.nombre} />
+                    <img className="carta-imagen" src={rutaImagen(proyecto.imagen)} alt={proyecto.nombre} />
                 )}
 
                 <div className="planes">
