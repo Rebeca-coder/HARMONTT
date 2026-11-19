@@ -281,7 +281,7 @@ Antes de usarlo, configura en el repositorio:
 - **Settings → Pages → Source:** GitHub Actions.
 - **Variables → `VITE_API_URL`:** la URL pública de la API, por ejemplo `https://harmont-api.onrender.com/api`.
 
-El workflow define automáticamente `VITE_BASE=/HARMONTT/` para que los archivos estáticos carguen correctamente.
+El workflow define automáticamente `VITE_BASE=/HARMONTT/` para que los archivos estáticos carguen correctamente. Las fotos usan `client/src/services/imagen.js`, que antepone `import.meta.env.BASE_URL` a las rutas `/img/...`; sin esa función las imágenes se buscarían en la raíz del dominio y no aparecerían en Pages.
 
 ### Backend
 
