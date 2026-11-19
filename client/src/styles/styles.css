@@ -163,6 +163,30 @@ textarea {
     color: var(--texto-suave);
 }
 
+.enlace-boton {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--texto-suave);
+    font: inherit;
+    font-size: 0.88rem;
+    cursor: pointer;
+}
+
+.texto-seccion-con-margen {
+    margin-top: 24px;
+}
+
+.mensaje-error {
+    color: #9d2f2f;
+    font-weight: 600;
+}
+
+.mensaje-exito {
+    color: #276b45;
+    font-weight: 600;
+}
+
 /* Menú hamburguesa: ahora lo controla React con useState */
 .boton-menu {
     display: none;

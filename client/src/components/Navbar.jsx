@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
 
 export default function Navbar() {
     // useState crea una variable de estado: cuando cambia, React vuelve a dibujar.
     const [menuAbierto, setMenuAbierto] = useState(false);
+    const { usuario, cerrarSesion } = useAuth();
 
     const cerrarMenu = () => setMenuAbierto(false);
 
@@ -25,6 +27,28 @@ export default function Navbar() {
                 <div className="cabecera-acciones">
                     <Link className="pildora pildora-pequena" to="/proyectos" onClick={cerrarMenu}>Explorar</Link>
                     <Link className="enlace-sesion" to="/contacto" onClick={cerrarMenu}>Hablemos</Link>
+                    {usuario ? (
+                        <>
+                            <Link className="enlace-sesion" to="/panel" onClick={cerrarMenu}>
+                                Mi panel
+                            </Link>
+                            <button
+                                type="button"
+                                className="enlace-sesion enlace-boton"
+                                onClick={async () => {
+                                    await cerrarSesion();
+                                    cerrarMenu();
+                                }}
+                            >
+                                Salir
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link className="enlace-sesion" to="/login" onClick={cerrarMenu}>Entrar</Link>
+                            <Link className="enlace-sesion" to="/registro" onClick={cerrarMenu}>Registro</Link>
+                        </>
+                    )}
                     <button
                         type="button"
                         className="boton-menu"
@@ -49,6 +73,26 @@ export default function Navbar() {
                 <Link to="/" state={{ seccion: 'empresas' }} onClick={cerrarMenu}>Empresas</Link>
                 <Link to="/" state={{ seccion: 'modelo' }} onClick={cerrarMenu}>Modelo</Link>
                 <Link to="/contacto" onClick={cerrarMenu}>Hablemos</Link>
+                {usuario ? (
+                    <>
+                        <Link to="/panel" onClick={cerrarMenu}>Mi panel</Link>
+                        <button
+                            type="button"
+                            className="enlace-boton"
+                            onClick={async () => {
+                                await cerrarSesion();
+                                cerrarMenu();
+                            }}
+                        >
+                            Salir
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <Link to="/login" onClick={cerrarMenu}>Entrar</Link>
+                        <Link to="/registro" onClick={cerrarMenu}>Registro</Link>
+                    </>
+                )}
             </nav>
         </header>
     );

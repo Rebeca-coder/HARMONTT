@@ -1,7 +1,7 @@
 import { useState } from 'react';
+import { api } from '../services/api.js';
 
 export default function Contacto() {
-    // Un solo estado con los cuatro campos: así se llama "input controlado".
     const [formulario, setFormulario] = useState({
         nombre: '',
         correo: '',
@@ -9,16 +9,34 @@ export default function Contacto() {
         mensaje: '',
     });
     const [enviado, setEnviado] = useState(false);
+    const [error, setError] = useState('');
+    const [enviando, setEnviando] = useState(false);
 
     const manejarCambio = (evento) => {
         const { name, value } = evento.target;
         setFormulario({ ...formulario, [name]: value });
     };
 
-    const manejarEnvio = (evento) => {
+    const manejarEnvio = async (evento) => {
         evento.preventDefault();
-        // En la FASE 4 aquí habrá un fetch a POST /api/contact.
-        setEnviado(true);
+        setError('');
+        setEnviado(false);
+        setEnviando(true);
+
+        try {
+            await api.post('/contacto', {
+                nombre: formulario.nombre,
+                email: formulario.correo,
+                asunto: formulario.asunto,
+                mensaje: formulario.mensaje,
+            });
+            setEnviado(true);
+            setFormulario({ nombre: '', correo: '', asunto: '', mensaje: '' });
+        } catch (fallo) {
+            setError(fallo.message);
+        } finally {
+            setEnviando(false);
+        }
     };
 
     return (
@@ -85,16 +103,14 @@ export default function Contacto() {
                         />
                     </div>
 
-                    <button className="pildora" type="submit">Enviar mensaje →</button>
+                    <button className="pildora" type="submit" disabled={enviando}>
+                        {enviando ? 'Enviando…' : 'Enviar mensaje →'}
+                    </button>
 
                     {enviado && (
-                        <p className="aviso">
-                            Mensaje validado en el navegador. En la FASE 4 se guardará en MongoDB.
-                        </p>
+                        <p className="mensaje-exito">Mensaje guardado correctamente en MongoDB.</p>
                     )}
-                    <p className="aviso">
-                        Maqueta funcional: todavía no hay backend ni almacenamiento.
-                    </p>
+                    {error && <p className="mensaje-error">{error}</p>}
                 </form>
 
                 <aside className="datos-contacto">

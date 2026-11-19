@@ -15,8 +15,9 @@ Harmont actúa como intermediario: revisa las propuestas de las empresas, las pu
 | Prototipo HTML original (`index.html`, `catalogo.html`, `contacto.html`) | Conservado en la raíz |
 | Maqueta visual responsiva | `maquetas/` |
 | Landing React + rutas + componentes | `client/` |
+| Registro/login, catálogo y contacto conectados a la API | `client/src/services/api.js` |
 | API Express + modelos + auth + flujo de proyectos/postulaciones | `server/` |
-| Paneles por rol | Pendiente |
+| Paneles por rol | En construcción |
 | MongoDB Atlas / despliegue | Pendiente |
 
 ---
@@ -84,6 +85,7 @@ GET http://localhost:4000/api/salud
 
 ```bash
 cd client
+cp .env.example .env.local   # solo si la API está en otra URL
 npm install
 npm run dev
 ```
