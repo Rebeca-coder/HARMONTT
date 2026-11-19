@@ -2,7 +2,7 @@ name: Desplegar frontend en GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Compilar
         env:
-          VITE_BASE: /Harmont-Ashley-Tobar/
+          VITE_BASE: /HARMONTT/
           VITE_API_URL: ${{ vars.VITE_API_URL }}
         run: npm run build
 
