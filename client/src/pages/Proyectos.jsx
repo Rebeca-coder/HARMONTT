@@ -16,12 +16,25 @@ function aTarjeta(proyecto) {
 }
 
 export default function Proyectos() {
-    const [parametros] = useSearchParams();
+    const [parametros, setParametros] = useSearchParams();
     const [proyectos, setProyectos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState('');
+    const [total, setTotal] = useState(0);
+    const [totalPaginas, setTotalPaginas] = useState(1);
+    const [tieneMas, setTieneMas] = useState(false);
 
-    const cadenaFiltros = parametros.toString();
+    const pagina = Math.max(Number(parametros.get('pagina')) || 1, 1);
+
+    // La paginación no es un filtro de negocio: la separamos para no mostrarla como tal.
+    const filtros = new URLSearchParams(parametros);
+    filtros.delete('pagina');
+    const cadenaFiltros = filtros.toString();
+
+    const consulta = new URLSearchParams(filtros);
+    consulta.set('pagina', String(pagina));
+    const sufijo = `?${consulta.toString()}`;
+
     const busqueda = parametros.get('q');
     const categoria = parametros.get('categoria');
     const modalidad = parametros.get('modalidad');
@@ -31,11 +44,13 @@ export default function Proyectos() {
         setCargando(true);
         setError('');
 
-        const sufijo = cadenaFiltros ? `?${cadenaFiltros}` : '';
-
         api.get(`/proyectos${sufijo}`)
             .then((datos) => {
-                if (!cancelado) setProyectos(datos.proyectos || []);
+                if (cancelado) return;
+                setProyectos(datos.proyectos || []);
+                setTotal(datos.total || 0);
+                setTotalPaginas(datos.totalPaginas || 1);
+                setTieneMas(Boolean(datos.tieneMas));
             })
             .catch((fallo) => {
                 if (!cancelado) setError(fallo.message);
@@ -45,7 +60,15 @@ export default function Proyectos() {
             });
 
         return () => { cancelado = true; };
-    }, [cadenaFiltros]);
+    }, [cadenaFiltros, pagina]);
+
+    const cambiarPagina = (nuevaPagina) => {
+        if (nuevaPagina < 1 || nuevaPagina > totalPaginas || nuevaPagina === pagina) return;
+        const siguientes = new URLSearchParams(parametros);
+        siguientes.set('pagina', String(nuevaPagina));
+        setParametros(siguientes);
+        document.getElementById('resultados')?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
         <>
@@ -65,7 +88,7 @@ export default function Proyectos() {
 
             <Buscador />
 
-            <section className="seccion">
+            <section className="seccion" id="resultados">
                 <div className="cabecera-seccion">
                     <div>
                         <p className="etiqueta-seccion">01 / Resultados</p>
@@ -85,6 +108,30 @@ export default function Proyectos() {
                         <ProjectCard key={proyecto.id} {...aTarjeta(proyecto)} />
                     ))}
                 </div>
+
+                {!cargando && !error && total > 0 && (
+                    <nav className="paginacion" aria-label="Paginación de proyectos">
+                        <button
+                            className="pildora pildora-pequena"
+                            type="button"
+                            disabled={pagina === 1}
+                            onClick={() => cambiarPagina(pagina - 1)}
+                        >
+                            ← Anterior
+                        </button>
+                        <span>
+                            Página {pagina} de {totalPaginas} · {total} proyecto(s)
+                        </span>
+                        <button
+                            className="pildora pildora-pequena"
+                            type="button"
+                            disabled={!tieneMas}
+                            onClick={() => cambiarPagina(pagina + 1)}
+                        >
+                            Siguiente →
+                        </button>
+                    </nav>
+                )}
             </section>
         </>
     );

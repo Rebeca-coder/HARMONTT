@@ -19,6 +19,7 @@ Harmont actúa como intermediario: revisa las propuestas de las empresas, las pu
 | API Express + modelos + auth + flujo de proyectos/postulaciones | `server/` |
 | Paneles de estudiante, empresa y administración | `client/src/pages/Panel*.jsx` |
 | Recomendador ponderado (50/30/20) | `server/src/services/recomendacionService.js` |
+| Paginación del catálogo (`skip`/`limit`) | `server/src/utils/paginacion.js` |
 | MongoDB Atlas / despliegue | Pendiente |
 
 ---
@@ -131,7 +132,7 @@ http://localhost:5173/#/contacto
 |---|---|---|
 | GET | `/api/salud` | Comprobación de vida |
 | GET | `/api/salud/base` | Comprobación de MongoDB (503 si no conecta) |
-| GET | `/api/proyectos` | Catálogo: `q`, `categoria`, `modalidad`, `origen`, `tipoEconomico` |
+| GET | `/api/proyectos` | Catálogo: `q`, `categoria`, `modalidad`, `origen`, `tipoEconomico`, `pagina`, `limite` |
 | GET | `/api/proyectos/:id` | Detalle |
 | POST | `/api/auth/registro` | Registro de estudiante o empresa |
 | POST | `/api/auth/login` | Inicio de sesión |
@@ -259,7 +260,7 @@ El porcentaje de perfil **se calcula** (`perfilService.js`), no se guarda.
 cd server && npm test
 ```
 
-Actualmente: **43 pruebas, 43 en verde**. Cubren permisos, transiciones, cupo, filtros de visibilidad, verificación de empresas, recomendador, respuestas de error, validación de modelos y escapado del buscador.
+Actualmente: **46 pruebas, 46 en verde**. Cubren permisos, transiciones, cupo, filtros de visibilidad, verificación de empresas, recomendador, paginación, respuestas de error, validación de modelos y escapado del buscador.
 
 ```bash
 cd client && npm run build && npm audit

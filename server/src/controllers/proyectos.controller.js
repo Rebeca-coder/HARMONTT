@@ -7,6 +7,7 @@ import {
 import { ApiError } from '../utils/apiError.js';
 import { asyncHandler } from '../utils/asyncHandler.js';
 import { escaparRegex } from '../utils/validacion.js';
+import { parsearPaginacion } from '../utils/paginacion.js';
 import {
     aplicarTransicionProyecto,
 } from '../services/estadosService.js';
@@ -133,13 +134,24 @@ export const listarProyectos = asyncHandler(async (req, res) => {
         ];
     }
 
+    const { pagina, limite, skip } = parsearPaginacion(req.query);
+    const total = await Project.countDocuments(filtro);
+    const totalPaginas = Math.max(1, Math.ceil(total / limite));
+
+    // skip salta los documentos de páginas anteriores; limit fija el tamaño de página.
     const proyectos = await Project.find(filtro)
         .populate('empresa', 'nombreComercial')
-        .sort({ fechaLimite: 1 });
+        .sort({ fechaLimite: 1 })
+        .skip(skip)
+        .limit(limite);
 
     res.json({
         ok: true,
-        total: proyectos.length,
+        total,
+        pagina,
+        limite,
+        totalPaginas,
+        tieneMas: pagina < totalPaginas,
         proyectos: proyectos.map(dtoPublico),
     });
 });
