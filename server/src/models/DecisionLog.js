@@ -8,7 +8,7 @@ const decisionLogSchema = new Schema(
     {
         recurso: {
             type: String,
-            enum: ['project', 'application', 'company'],
+            enum: ['project', 'application', 'company', 'companyprofile', 'experiencerecord'],
             required: true,
         },
         recursoId: {

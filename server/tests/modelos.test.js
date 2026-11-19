@@ -6,6 +6,7 @@ import User from '../src/models/User.js';
 import Project from '../src/models/Project.js';
 import CompanyProfile from '../src/models/CompanyProfile.js';
 import ExperienceRecord from '../src/models/ExperienceRecord.js';
+import DecisionLog from '../src/models/DecisionLog.js';
 
 const id = () => new mongoose.Types.ObjectId();
 
@@ -52,6 +53,20 @@ test('existe un índice único para evitar postulaciones duplicadas', () => {
 
 test('el hash de contraseña no se devuelve por defecto', () => {
     assert.equal(User.schema.path('passwordHash').options.select, false);
+});
+
+test('la auditoría acepta decisiones sobre empresas y experiencias', async () => {
+    const recursos = ['companyprofile', 'experiencerecord'];
+    for (const recurso of recursos) {
+        const decision = new DecisionLog({
+            recurso,
+            recursoId: id(),
+            actor: id(),
+            rolActor: 'admin',
+            accion: 'prueba',
+        });
+        assert.deepEqual(await erroresDe(decision), {});
+    }
 });
 
 test('un proyecto nuevo nace en borrador y la empresa nace pendiente', async () => {

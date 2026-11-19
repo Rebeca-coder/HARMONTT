@@ -17,6 +17,12 @@ import {
 
 const texto = (valor) => (typeof valor === 'string' ? valor.trim() : valor);
 
+// Un PATCH puede enviar solo algunos campos. Solo se copian las claves presentes,
+// para no borrar con undefined o con arreglos vacíos lo que el usuario no tocó.
+export const soloEnviados = (body, objeto) => Object.fromEntries(
+    Object.entries(objeto).filter(([clave]) => Object.prototype.hasOwnProperty.call(body, clave))
+);
+
 // Una lista puede llegar como arreglo (API) o como texto separado por comas (formulario).
 function lista(valor) {
     if (Array.isArray(valor)) {
@@ -43,7 +49,7 @@ function proyectosPersonales(valor) {
 // Lista blanca: jamás copiamos req.body completo porque ahí podría venir
 // estadoVerificacion, usuario o cualquier campo de control.
 function datosEstudiante(body = {}) {
-    return {
+    return soloEnviados(body, {
         foto: texto(body.foto),
         descripcion: texto(body.descripcion),
         ubicacion: texto(body.ubicacion),
@@ -59,11 +65,11 @@ function datosEstudiante(body = {}) {
         proyectosPersonales: proyectosPersonales(body.proyectosPersonales),
         portafolio: lista(body.portafolio),
         disponibilidad: texto(body.disponibilidad),
-    };
+    });
 }
 
 function datosEmpresa(body = {}) {
-    return {
+    return soloEnviados(body, {
         nombreComercial: texto(body.nombreComercial),
         razonSocial: texto(body.razonSocial),
         correoEmpresarial: texto(body.correoEmpresarial)?.toLowerCase(),
@@ -73,7 +79,7 @@ function datosEmpresa(body = {}) {
         descripcion: texto(body.descripcion),
         sitioWeb: texto(body.sitioWeb),
         logotipo: texto(body.logotipo),
-    };
+    });
 }
 
 export const obtenerMiPerfil = asyncHandler(async (req, res) => {

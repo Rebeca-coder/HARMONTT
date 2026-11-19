@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { calcularCompletitud, camposFaltantesParaPostular, puedePostularse } from '../src/services/perfilService.js';
+import { soloEnviados } from '../src/controllers/perfiles.controller.js';
 
 test('un perfil vacío no alcanza el mínimo para postularse', () => {
     const resultado = puedePostularse({}, { nombre: 'Ana' });
@@ -40,6 +41,19 @@ test('el porcentaje de completitud se calcula y está entre 0 y 100', () => {
     );
     assert.equal(vacio, 0);
     assert.equal(completo, 100);
+});
+
+test('un PATCH parcial no borra campos que no se enviaron', () => {
+    const cambios = soloEnviados(
+        { descripcion: 'Nueva descripción' },
+        {
+            descripcion: 'Nueva descripción',
+            ubicacion: undefined,
+            formacion: undefined,
+            habilidadesTecnicas: [],
+        }
+    );
+    assert.deepEqual(cambios, { descripcion: 'Nueva descripción' });
 });
 
 test('camposFaltantesParaPostular devuelve nombres entendibles', () => {
