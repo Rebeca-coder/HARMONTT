@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harmont conecta a jóvenes con proyectos prácticos para que demuestren lo que saben hacer y construyan experiencia verificable.">
+    <link rel="icon" href="../img/Ht (1).png" type="image/png">
+    <link rel="stylesheet" href="../client/src/styles/styles.css">
+    <title>Harmont | Demuestra lo que sabes hacer</title>
+</head>
+<body>
+<div class="pagina">
+
+    <!-- Cabecera: logo HARMONT centrado, navegación a la izquierda, acciones a la derecha -->
+    <header class="cabecera">
+        <!-- Este checkbox permite abrir el menú en móvil sin necesidad de JavaScript -->
+        <input type="checkbox" id="menu-movil" class="menu-checkbox">
+
+        <div class="cabecera-interna">
+            <nav class="navegacion navegacion-izquierda" aria-label="Navegación principal">
+                <a href="catalogo.html">Proyectos</a>
+                <a href="#como-funciona">Cómo funciona</a>
+                <a href="#empresas">Empresas</a>
+                <a href="#modelo">Modelo</a>
+            </nav>
+
+            <a class="logo" href="#inicio">HARMONT<span class="logo-detalle" aria-hidden="true">✦</span></a>
+
+            <div class="cabecera-acciones">
+                <a class="pildora pildora-pequena" href="catalogo.html">Explorar</a>
+                <a class="enlace-sesion" href="contacto.html">Hablemos</a>
+                <label for="menu-movil" class="boton-menu" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Menú desplegable que aparece solo en pantallas pequeñas -->
+        <nav class="navegacion-movil" aria-label="Navegación móvil">
+            <a href="catalogo.html">Proyectos</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#empresas">Empresas</a>
+            <a href="#modelo">Modelo</a>
+            <a href="contacto.html">Hablemos</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero: imagen panorámica con el título HARMONT superpuesto -->
+        <section class="hero" id="inicio">
+            <div class="hero-marco">
+                <img class="hero-imagen"
+                     src="https://picsum.photos/seed/harmont-hero/1800/900"
+                     alt="Paisaje natural que representa nuevas oportunidades">
+                <div class="hero-velo" aria-hidden="true"></div>
+
+                <h1 class="hero-titulo">HARMONT</h1>
+
+                <p class="hero-titular">EXPERIENCIA DEMOSTRABLE<br>PARA JÓVENES TALENTOSOS</p>
+
+                <p class="hero-texto">
+                    Conectamos a estudiantes con proyectos reales y simulados para que
+                    demuestren lo que saben hacer y construyan un portafolio con evidencia.
+                </p>
+
+                <a class="hero-accion" href="#proyectos">
+                    <span class="circulo-flecha" aria-hidden="true">→</span>
+                    EXPLORA LOS PROYECTOS
+                </a>
+
+                <a class="hero-deslizamiento" href="#proyectos">DESLIZA PARA DESCUBRIR ↓</a>
+
+        </section>
+
+        <!-- Buscador: los nombres de los campos (name) servirán después para filtrar en la API -->
+        <form class="buscador" action="catalogo.html" method="get">
+            <div class="campo">
+                <label for="buscar-q">Proyecto o habilidad</label>
+                <input id="buscar-q" name="q" type="text" placeholder="Ej. marketing, React, diseño">
+            </div>
+            <div class="campo">
+                <label for="buscar-categoria">Categoría</label>
+                <select id="buscar-categoria" name="categoria">
+                    <option value="">Todas las categorías</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="tecnologia">Tecnología</option>
+                    <option value="diseno">Diseño</option>
+                    <option value="datos">Datos</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="buscar-modalidad">Modalidad</label>
+                <select id="buscar-modalidad" name="modalidad">
+                    <option value="">Cualquier modalidad</option>
+                    <option value="remoto">Remoto</option>
+                    <option value="presencial">Presencial</option>
+                    <option value="hibrido">Híbrido</option>
+                </select>
+            </div>
+            <button class="boton-buscar" type="submit" aria-label="Buscar proyectos">⌕</button>
+        </form>
+
+        <!-- Proyectos destacados: mismas tarjetas que usará el catálogo -->
+        <section class="seccion" id="proyectos">
+            <div class="cabecera-seccion">
+                <div>
+                    <p class="etiqueta-seccion">01 / Oportunidades</p>
+                    <h2 class="titulo-seccion">Proyectos recomendados</h2>
+                    <p class="texto-seccion">Retos con objetivos, tareas y entregables definidos. Elige uno y empieza a construir tu experiencia.</p>
+                </div>
+                <a class="enlace-con-flecha" href="catalogo.html">Ver todos los proyectos →</a>
+            </div>
+
+            <div class="lista-tarjetas">
+                <article class="carta">
+                    <img class="carta-imagen" src="https://picsum.photos/seed/harmont-proyecto-1/700/500"
+                         alt="Equipo trabajando en una estrategia de marketing">
+                    <div class="carta-cuerpo">
+                        <span class="carta-etiqueta">Marketing · Simulado</span>
+                        <p class="carta-meta">4 semanas · Remoto · Harmont selecciona</p>
+                        <h3 class="carta-titulo">Estrategia de marketing para una marca ficticia</h3>
+                        <p class="carta-texto">Diseña una estrategia completa de lanzamiento y presenta tus entregables.</p>
+                        <a class="enlace-con-flecha" href="catalogo.html">Ver proyecto →</a>
+                    </div>
+                </article>
+
+                <article class="carta">
+                    <img class="carta-imagen" src="https://picsum.photos/seed/harmont-proyecto-2/700/500"
+                         alt="Visualización de datos en una pantalla">
+                    <div class="carta-cuerpo">
+                        <span class="carta-etiqueta">Datos · Voluntario</span>
+                        <p class="carta-meta">6 semanas · Híbrido · Harmont selecciona</p>
+                        <h3 class="carta-titulo">Dashboard de impacto para una organización social</h3>
+                        <p class="carta-texto">Convierte datos reales en un panel claro para medir resultados.</p>
+                        <a class="enlace-con-flecha" href="catalogo.html">Ver proyecto →</a>
+                    </div>
+                </article>
+
+                <article class="carta">
+                    <img class="carta-imagen" src="https://picsum.photos/seed/harmont-proyecto-3/700/500"
+                         alt="Diseñador revisando una interfaz">
+                    <div class="carta-cuerpo">
+                        <span class="carta-etiqueta">Diseño · Remunerado</span>
+                        <p class="carta-meta">3 semanas · Remoto · Harmont selecciona</p>
+                        <h3 class="carta-titulo">Rediseño de la experiencia de usuario</h3>
+                        <p class="carta-texto">Investiga, propón mejoras y entrega un prototipo justificado.</p>
+                        <a class="enlace-con-flecha" href="catalogo.html">Ver proyecto →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Beneficios: se conservan los textos útiles del prototipo original -->
+        <section class="seccion por-que">
+            <div>
+                <p class="etiqueta-seccion">02 / Por qué Harmont</p>
+                <h2 class="titulo-seccion">No somos una bolsa de empleo ni una plataforma de cursos</h2>
+                <p class="texto-seccion">Aquí demuestras lo que sabes hacer con trabajos concretos. Las empresas conocen talento joven por lo que produce, no solo por un currículum.</p>
+
+                <div class="estadisticas">
+                    <div>
+                        <strong>Gratis</strong>
+                        <span>para estudiantes</span>
+                    </div>
+                    <div>
+                        <strong>9</strong>
+                        <span>categorías de proyectos</span>
+                    </div>
+                    <div>
+                        <strong>3</strong>
+                        <span>tipos de proyecto</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tres">
+                <div class="carta-servicio">
+                    
+                    <div>
+                        <h3>Proyectos prácticos</h3>
+                        <p>Retos con objetivos, instrucciones y entregables claros para practicar de verdad.</p>
+                    </div>
+                </div>
+                <div class="carta-servicio">
+                    
+                    <div>
+                        <h3>Selección supervisada</h3>
+                        <p>Harmont revisa cada perfil con criterios claros; la decisión no es automática.</p>
+                    </div>
+                </div>
+                <div class="carta-servicio">
+                    <div>
+                        <h3>Portafolio y referencias</h3>
+                        <p>Tus trabajos aprobados se convierten en evidencia de tus habilidades.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categorías: enlaces reales al catálogo con el filtro en la URL -->
+        <section class="seccion">
+            <div class="cabecera-seccion">
+                <div>
+                    <p class="etiqueta-seccion">03 / Categorías</p>
+                    <h2 class="titulo-seccion">Encuentra tu espacio</h2>
+                </div>
+            </div>
+            <div class="lista-categorias">
+                <a class="chip" href="catalogo.html?categoria=marketing">Marketing</a>
+                <a class="chip" href="catalogo.html?categoria=tecnologia">Tecnología</a>
+                <a class="chip" href="catalogo.html?categoria=diseno">Diseño</a>
+                <a class="chip" href="catalogo.html?categoria=datos">Datos</a>
+                <a class="chip" href="catalogo.html?categoria=comunicacion">Comunicación</a>
+                <a class="chip" href="catalogo.html?categoria=finanzas">Finanzas</a>
+                <a class="chip" href="catalogo.html?categoria=rrhh">Recursos Humanos</a>
+                <a class="chip" href="catalogo.html?categoria=logistica">Logística</a>
+                <a class="chip" href="catalogo.html?categoria=educacion">Educación</a>
+            </div>
+        </section>
+
+        <!-- Sección editorial de dos columnas, adaptada de "Elevate Your Adventures" -->
+        <section class="seccion experiencia">
+            <div>
+                <p class="etiqueta-seccion">04 / Experiencia real</p>
+                <h2 class="titulo-seccion">Eleva tu experiencia</h2>
+                <p class="texto-seccion">Cada proyecto es una oportunidad para practicar, recibir retroalimentación y dejar una huella verificable de tu trabajo.</p>
+
+                <div class="tres tres-con-margen">
+                    <div class="carta-servicio">
+                        <span class="icono" aria-hidden="true">◎</span>
+                        <div>
+                            <h3>Retos con entregables claros</h3>
+                            <p>Sabes desde el principio qué debes producir y cómo se evaluará.</p>
+                        </div>
+                    </div>
+                    <div class="carta-servicio">
+                        <span class="icono" aria-hidden="true">✦</span>
+                        <div>
+                            <h3>Acompañamiento de Harmont</h3>
+                            <p>Revisamos las postulaciones y supervisamos el desarrollo del proyecto.</p>
+                        </div>
+                    </div>
+                    <div class="carta-servicio">
+                        <span class="icono" aria-hidden="true">▣</span>
+                        <div>
+                            <h3>Evidencia para tu portafolio</h3>
+                            <p>Tus entregables aprobados se convierten en pruebas de tus habilidades.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experiencia-imagen">
+                <img src="https://picsum.photos/seed/harmont-experiencia/1000/1200"
+                     alt="Persona trabajando en un proyecto colaborativo">
+                <div class="etiqueta-flotante">
+                    <strong>Proyecto destacado</strong>
+                    <span>Diseño · Modalidad remota</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cómo funciona: cuatro pasos, numeración corregida respecto al prototipo -->
+        <section class="seccion" id="como-funciona">
+            <div class="cabecera-seccion">
+                <div>
+                    <p class="etiqueta-seccion">05 / Cómo funciona</p>
+                    <h2 class="titulo-seccion">Empezar es así de fácil</h2>
+                </div>
+            </div>
+            <ol class="pasos">
+                <li>
+                    <b>1</b>
+                    <h3>Crea tu perfil</h3>
+                    <p>Cuenta quién eres, qué sabes hacer y qué te interesa.</p>
+                </li>
+                <li>
+                    <b>2</b>
+                    <h3>Encuentra proyectos</h3>
+                    <p>Busca por categoría, modalidad, duración y habilidades.</p>
+                </li>
+                <li>
+                    <b>3</b>
+                    <h3>Demuestra tus habilidades</h3>
+                    <p>Entrega tu trabajo y recibe retroalimentación.</p>
+                </li>
+                <li>
+                    <b>4</b>
+                    <h3>Construye tu experiencia</h3>
+                    <p>Suma evidencia real a tu portafolio profesional.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Empresas -->
+        <section class="seccion" id="empresas">
+            <div class="cabecera-seccion">
+                <div>
+                    <p class="etiqueta-seccion">06 / Para empresas</p>
+                    <h2 class="titulo-seccion">Descubre talento viéndolo trabajar</h2>
+                    <p class="texto-seccion">Convertimos tu necesidad en un reto con objetivos y entregables definidos. Harmont selecciona a los participantes y supervisa el proceso.</p>
+                </div>
+                <a class="pildora" href="contacto.html">Publicar un proyecto</a>
+            </div>
+        </section>
+
+        <!-- Modelo de negocio: solo explicación, sin pasarela de pagos -->
+        <section class="seccion" id="modelo">
+            <div class="cabecera-seccion">
+                <div>
+                    <p class="etiqueta-seccion">07 / Modelo de negocio</p>
+                    <h2 class="titulo-seccion">Un modelo sostenible para todas las partes</h2>
+                    <p class="texto-seccion">Los estudiantes participan gratis. Harmont genera ingresos con servicios para empresas, sin cobros automáticos en esta versión.</p>
+                </div>
+            </div>
+            <div class="planes">
+                <article class="plan">
+                    <h3>Publicación de proyectos</h3>
+                    <p>La empresa publica un reto con entregables definidos y recibe postulaciones de perfiles verificados.</p>
+                </article>
+                <article class="plan">
+                    <h3>Selección asistida</h3>
+                    <p>Harmont evalúa los perfiles, entrevista y propone candidatos según criterios transparentes.</p>
+                </article>
+                <article class="plan">
+                    <h3>Planes empresariales</h3>
+                    <p>Paquetes con distintos beneficios: número de proyectos, informes de evaluación y acompañamiento.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Llamada a la acción -->
+        <section class="seccion">
+            <div class="llamada">
+                <h2>Tu primera oportunidad empieza con una entrega</h2>
+                <p>Explora los proyectos disponibles o cuéntanos qué necesita tu empresa. Nosotros nos encargamos del resto.</p>
+                <a class="pildora" href="catalogo.html">Explorar proyectos →</a>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section class="seccion" id="contacto">
+            <div class="cabecera-seccion">
+                <div>
+                    <p class="etiqueta-seccion">08 / Contacto</p>
+                    <h2 class="titulo-seccion">Hablemos de tu próximo proyecto</h2>
+                    <p class="texto-seccion">Cuéntanos qué necesitas y diseñamos juntos un reto con objetivos y entregables claros.</p>
+                </div>
+                <a class="pildora" href="contacto.html">Enviar un mensaje</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="final">
+        <div class="final-interna">
+            <div>
+                <p class="final-logo">HARMONT<span class="logo-detalle" aria-hidden="true">✦</span></p>
+                <p>Experiencia demostrable para jóvenes talentosos. Proyectos prácticos, selección supervisada y portafolio con evidencia.</p>
+            </div>
+            <div>
+                <h3>Plataforma</h3>
+                <div class="final-enlaces">
+                    <a href="catalogo.html">Proyectos</a>
+                    <a href="#como-funciona">Cómo funciona</a>
+                    <a href="#modelo">Modelo de negocio</a>
+                </div>
+            </div>
+            <div>
+                <h3>Empresas</h3>
+                <div class="final-enlaces">
+                    <a href="#empresas">Para empresas</a>
+                    <a href="contacto.html">Contacto</a>
+                    <a href="contacto.html">Solicitar colaboración</a>
+                </div>
+            </div>
+        </div>
+        <div class="final-abajo">
+            <p>Harmont · Demuestra lo que sabes hacer.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

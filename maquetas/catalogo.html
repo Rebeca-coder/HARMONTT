@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explora los proyectos disponibles en Harmont y filtra por categoría, modalidad o habilidad.">
+    <link rel="icon" href="../img/Ht (1).png" type="image/png">
+    <link rel="stylesheet" href="../client/src/styles/styles.css">
+    <title>Proyectos | Harmont</title>
+</head>
+<body>
+<div class="pagina">
+
+    <!-- Este encabezado se repite en todas las maquetas; en React será un componente único -->
+    <header class="cabecera">
+        <input type="checkbox" id="menu-movil" class="menu-checkbox">
+
+        <div class="cabecera-interna">
+            <nav class="navegacion navegacion-izquierda" aria-label="Navegación principal">
+                <a href="catalogo.html">Proyectos</a>
+                <a href="index.html#como-funciona">Cómo funciona</a>
+                <a href="index.html#empresas">Empresas</a>
+                <a href="index.html#modelo">Modelo</a>
+            </nav>
+
+            <a class="logo" href="index.html">HARMONT<span class="logo-detalle" aria-hidden="true">✦</span></a>
+
+            <div class="cabecera-acciones">
+                <a class="pildora pildora-pequena" href="contacto.html">Publicar</a>
+                <a class="enlace-sesion" href="contacto.html">Hablemos</a>
+                <label for="menu-movil" class="boton-menu" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+        </div>
+
+        <nav class="navegacion-movil" aria-label="Navegación móvil">
+            <a href="catalogo.html">Proyectos</a>
+            <a href="index.html#como-funciona">Cómo funciona</a>
+            <a href="index.html#empresas">Empresas</a>
+            <a href="index.html#modelo">Modelo</a>
+            <a href="contacto.html">Hablemos</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="portada-interna">
+            <p class="etiqueta-seccion">Catálogo de proyectos</p>
+            <h1>Explora proyectos</h1>
+            <p>Busca por habilidad, categoría o modalidad. Cada reto tiene objetivos, tareas y entregables definidos.</p>
+        </div>
+
+        <form class="buscador" action="catalogo.html" method="get">
+            <div class="campo">
+                <label for="buscar-q">Proyecto o habilidad</label>
+                <input id="buscar-q" name="q" type="text" placeholder="Ej. marketing, React, diseño">
+            </div>
+            <div class="campo">
+                <label for="buscar-categoria">Categoría</label>
+                <select id="buscar-categoria" name="categoria">
+                    <option value="">Todas las categorías</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="tecnologia">Tecnología</option>
+                    <option value="diseno">Diseño</option>
+                    <option value="datos">Datos</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="buscar-modalidad">Modalidad</label>
+                <select id="buscar-modalidad" name="modalidad">
+                    <option value="">Cualquier modalidad</option>
+                    <option value="remoto">Remoto</option>
+                    <option value="presencial">Presencial</option>
+                    <option value="hibrido">Híbrido</option>
+                </select>
+            </div>
+            <button class="boton-buscar" type="submit" aria-label="Buscar proyectos">⌕</button>
+        </form>
+
+        <section class="seccion">
+            <div class="cabecera-seccion">
+                <div>
+                    <p class="etiqueta-seccion">01 / Resultados</p>
+                    <h2 class="titulo-seccion">Proyectos disponibles</h2>
+                </div>
+                <a class="enlace-con-flecha" href="index.html">Volver al inicio →</a>
+            </div>
+
+            <div class="lista-tarjetas">
+                <article class="carta">
+                    <img class="carta-imagen" src="https://picsum.photos/seed/harmont-proyecto-1/700/500"
+                         alt="Equipo trabajando en una estrategia de marketing">
+                    <div class="carta-cuerpo">
+                        <span class="carta-etiqueta">Marketing · Simulado</span>
+                        <p class="carta-meta">4 semanas · Remoto · Harmont selecciona</p>
+                        <h3 class="carta-titulo">Estrategia de marketing para una marca ficticia</h3>
+                        <p class="carta-texto">Diseña una estrategia completa de lanzamiento y presenta tus entregables.</p>
+                        <a class="enlace-con-flecha" href="contacto.html">Postularme →</a>
+                    </div>
+                </article>
+
+                <article class="carta">
+                    <img class="carta-imagen" src="https://picsum.photos/seed/harmont-proyecto-2/700/500"
+                         alt="Visualización de datos en una pantalla">
+                    <div class="carta-cuerpo">
+                        <span class="carta-etiqueta">Datos · Voluntario</span>
+                        <p class="carta-meta">6 semanas · Híbrido · Harmont selecciona</p>
+                        <h3 class="carta-titulo">Dashboard de impacto para una organización social</h3>
+                        <p class="carta-texto">Convierte datos reales en un panel claro para medir resultados.</p>
+                        <a class="enlace-con-flecha" href="contacto.html">Postularme →</a>
+                    </div>
+                </article>
+
+                <article class="carta">
+                    <img class="carta-imagen" src="https://picsum.photos/seed/harmont-proyecto-3/700/500"
+                         alt="Diseñador revisando una interfaz">
+                    <div class="carta-cuerpo">
+                        <span class="carta-etiqueta">Diseño · Remunerado</span>
+                        <p class="carta-meta">3 semanas · Remoto · Harmont selecciona</p>
+                        <h3 class="carta-titulo">Rediseño de la experiencia de usuario</h3>
+                        <p class="carta-texto">Investiga, propón mejoras y entrega un prototipo justificado.</p>
+                        <a class="enlace-con-flecha" href="contacto.html">Postularme →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="final">
+        <div class="final-interna">
+            <div>
+                <p class="final-logo">HARMONT<span class="logo-detalle" aria-hidden="true">✦</span></p>
+                <p>Experiencia demostrable para jóvenes talentosos.</p>
+            </div>
+            <div>
+                <h3>Plataforma</h3>
+                <div class="final-enlaces">
+                    <a href="catalogo.html">Proyectos</a>
+                    <a href="index.html#como-funciona">Cómo funciona</a>
+                    <a href="index.html#modelo">Modelo de negocio</a>
+                </div>
+            </div>
+            <div>
+                <h3>Empresas</h3>
+                <div class="final-enlaces">
+                    <a href="contacto.html">Contacto</a>
+                    <a href="contacto.html">Solicitar colaboración</a>
+                </div>
+            </div>
+        </div>
+        <div class="final-abajo">
+            <p>Harmont · Demuestra lo que sabes hacer.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

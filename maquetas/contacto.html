@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacta con Harmont para publicar un proyecto o solicitar información sobre la plataforma.">
+    <link rel="icon" href="../img/Ht (1).png" type="image/png">
+    <link rel="stylesheet" href="../client/src/styles/styles.css">
+    <title>Contacto | Harmont</title>
+</head>
+<body>
+<div class="pagina">
+
+    <header class="cabecera">
+        <input type="checkbox" id="menu-movil" class="menu-checkbox">
+
+        <div class="cabecera-interna">
+            <nav class="navegacion navegacion-izquierda" aria-label="Navegación principal">
+                <a href="catalogo.html">Proyectos</a>
+                <a href="index.html#como-funciona">Cómo funciona</a>
+                <a href="index.html#empresas">Empresas</a>
+                <a href="index.html#modelo">Modelo</a>
+            </nav>
+
+            <a class="logo" href="index.html">HARMONT<span class="logo-detalle" aria-hidden="true">✦</span></a>
+
+            <div class="cabecera-acciones">
+                <a class="pildora pildora-pequena" href="catalogo.html">Explorar</a>
+                <a class="enlace-sesion" href="contacto.html">Hablemos</a>
+                <label for="menu-movil" class="boton-menu" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+        </div>
+
+        <nav class="navegacion-movil" aria-label="Navegación móvil">
+            <a href="catalogo.html">Proyectos</a>
+            <a href="index.html#como-funciona">Cómo funciona</a>
+            <a href="index.html#empresas">Empresas</a>
+            <a href="index.html#modelo">Modelo</a>
+            <a href="contacto.html">Hablemos</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="portada-interna">
+            <p class="etiqueta-seccion">Contacto</p>
+            <h1>Colabora con Harmont</h1>
+            <p>Cuéntanos qué necesita tu empresa. Diseñamos un proyecto práctico, seleccionamos a los participantes y supervisamos las entregas.</p>
+        </div>
+
+        <section class="seccion contacto">
+            <!-- En la FASE 4 este formulario enviará los datos a Express y se guardarán en MongoDB -->
+            <form class="formulario-contacto" action="" method="post">
+                <div class="campo-formulario">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre completo">
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="correo">Correo electrónico</label>
+                    <input id="correo" name="correo" type="email" required placeholder="nombre@empresa.com">
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="asunto">Asunto</label>
+                    <input id="asunto" name="asunto" type="text" required placeholder="¿En qué podemos ayudarte?">
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos tu proyecto o tu consulta"></textarea>
+                </div>
+
+                <button class="pildora" type="submit">Enviar mensaje →</button>
+                <p class="aviso">Maqueta: el envío se conectará a la API y a MongoDB en la FASE 4. Por ahora el formulario valida los campos en el navegador.</p>
+            </form>
+
+            <aside class="datos-contacto">
+                <h2>Hablemos</h2>
+                <p>Harmont revisa cada solicitud y responde con una propuesta de proyecto adaptada a tu necesidad.</p>
+                <p><strong>Correo:</strong> hola@harmont.example</p>
+                <p><strong>Horario:</strong> lunes a viernes, 9:00 a 18:00</p>
+                <p class="aviso">El correo mostrado es ilustrativo: se sustituirá por el real al desplegar.</p>
+            </aside>
+        </section>
+    </main>
+
+    <footer class="final">
+        <div class="final-interna">
+            <div>
+                <p class="final-logo">HARMONT<span class="logo-detalle" aria-hidden="true">✦</span></p>
+                <p>Experiencia demostrable para jóvenes talentosos.</p>
+            </div>
+            <div>
+                <h3>Plataforma</h3>
+                <div class="final-enlaces">
+                    <a href="catalogo.html">Proyectos</a>
+                    <a href="index.html#como-funciona">Cómo funciona</a>
+                    <a href="index.html#modelo">Modelo de negocio</a>
+                </div>
+            </div>
+            <div>
+                <h3>Empresas</h3>
+                <div class="final-enlaces">
+                    <a href="index.html#empresas">Para empresas</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+            </div>
+        </div>
+        <div class="final-abajo">
+            <p>Harmont · Demuestra lo que sabes hacer.</p>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
