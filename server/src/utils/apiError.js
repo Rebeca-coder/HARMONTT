@@ -34,6 +34,13 @@ export function manejarErrores(error, req, res, next) {
         return res.status(401).json({ ok: false, mensaje: 'Sesión no válida o caducada' });
     }
 
+    const sinBase = error.name === 'MongooseError'
+        || error.name === 'MongoServerSelectionError'
+        || /buffering timed out/.test(error.message || '');
+    if (sinBase) {
+        return res.status(503).json({ ok: false, mensaje: 'Base de datos no disponible' });
+    }
+
     console.error(error);
     return res.status(500).json({
         ok: false,

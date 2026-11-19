@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import { env } from './config/env.js';
 import authRoutes from './routes/auth.routes.js';
 import contactoRoutes from './routes/contacto.routes.js';
+import proyectosRoutes from './routes/proyectos.routes.js';
+import postulacionesRoutes from './routes/postulaciones.routes.js';
 import { manejarErrores } from './utils/apiError.js';
 
 const app = express();
@@ -24,6 +26,8 @@ app.get('/api/salud', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/contacto', contactoRoutes);
+app.use('/api/proyectos', proyectosRoutes);
+app.use('/api/postulaciones', postulacionesRoutes);
 
 app.use((req, res) => {
     res.status(404).json({ ok: false, mensaje: 'Ruta no encontrada' });

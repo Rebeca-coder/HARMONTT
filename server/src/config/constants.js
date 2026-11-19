@@ -224,6 +224,13 @@ export const TRANSICIONES = {
     ],
 };
 
+// La empresa NUNCA ve postulaciones en etapas de Harmont.
+export const ESTADOS_VISIBLES_EMPRESA = [
+    'en_evaluacion_empresa',
+    'seleccionada',
+    'no_seleccionada',
+];
+
 // Campos mínimos para postularse. Experiencia previa NO aparece aquí.
 export const CAMPOS_MINIMOS_ESTUDIANTE = [
     'nombre',
