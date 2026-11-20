@@ -1,13 +1,8 @@
-/* =========================================================
-   HARMONT · Estilos base de la maqueta
-   Paleta: cafés sobre fondo blanco.
-   Tipografía: serif editorial para títulos, sans para textos.
-   Este mismo archivo se reutilizará cuando pasemos a React.
-   ========================================================= */
+
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap");
 
-/* 1. Variables de diseño: cambiar aquí cambia toda la página */
+
 :root {
     --cafe-oscuro: #ca6014;
     --cafe: #5b4132;
@@ -30,7 +25,7 @@
     --espacio-seccion: 104px;
 }
 
-/* 2. Reinicio mínimo y reglas generales */
+/* . Reinicio mínimo y reglas generales */
 *,
 *::before,
 *::after {
@@ -76,7 +71,7 @@ textarea {
     margin-inline: auto;
 }
 
-/* 3. Encabezado: logo centrado, menú a la izquierda, acciones a la derecha */
+/*. Encabezado: logo centrado, menú a la izquierda, acciones a la derecha */
 .cabecera {
     position: relative;
     z-index: 10;
