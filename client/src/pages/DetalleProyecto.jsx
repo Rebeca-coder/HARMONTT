@@ -6,7 +6,7 @@ import { rutaImagen } from '../services/imagen.js';
 
 export default function DetalleProyecto() {
     const { id } = useParams();
-    const { usuario } = useAuth();
+    const { usuario, cargando: cargandoSesion } = useAuth();
     const navigate = useNavigate();
     const [proyecto, setProyecto] = useState(null);
     const [error, setError] = useState('');
@@ -18,6 +18,7 @@ export default function DetalleProyecto() {
     });
     const [resultado, setResultado] = useState('');
     const [enviando, setEnviando] = useState(false);
+    const [faltantes, setFaltantes] = useState([]);
 
     useEffect(() => {
         let cancelado = false;
@@ -33,6 +34,7 @@ export default function DetalleProyecto() {
     };
 
     const empezarPostulacion = () => {
+        if (cargandoSesion) return;
         if (!usuario) {
             navigate('/login', { state: { desde: `/proyectos/${id}` } });
             return;
@@ -48,6 +50,7 @@ export default function DetalleProyecto() {
         evento.preventDefault();
         setError('');
         setResultado('');
+        setFaltantes([]);
         setEnviando(true);
 
         try {
@@ -67,7 +70,7 @@ export default function DetalleProyecto() {
             setMostrarFormulario(false);
         } catch (fallo) {
             if (fallo.detalles?.faltantes) {
-                setError(`Falta completar: ${fallo.detalles.faltantes.join(', ')}`);
+                setFaltantes(fallo.detalles.faltantes);
             } else {
                 setError(fallo.message);
             }
@@ -134,12 +137,31 @@ export default function DetalleProyecto() {
                     {proyecto.descripcion}
                 </p>
 
-                <button className="pildora" type="button" onClick={empezarPostulacion}>
-                    Postularme →
+                <p className="aviso">
+                    {cargandoSesion
+                        ? 'Comprobando tu sesión…'
+                        : usuario
+                            ? `Sesión activa: ${usuario.nombre} · ${usuario.rol}`
+                            : 'Inicia sesión como estudiante para poder postularte.'}
+                </p>
+
+                <button
+                    className="pildora"
+                    type="button"
+                    onClick={empezarPostulacion}
+                    disabled={cargandoSesion}
+                >
+                    {cargandoSesion ? 'Comprobando sesión…' : 'Postularme →'}
                 </button>
 
                 {resultado && <p className="mensaje-exito">{resultado}</p>}
                 {error && <p className="mensaje-error">{error}</p>}
+                {faltantes.length > 0 && (
+                    <p className="mensaje-error">
+                        Para postularte completa tu perfil: {faltantes.join(', ')}.{' '}
+                        <Link className="enlace-con-flecha" to="/panel">Ir a mi panel →</Link>
+                    </p>
+                )}
             </section>
 
             {mostrarFormulario && (
