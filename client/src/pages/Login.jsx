@@ -67,7 +67,7 @@ export default function Login() {
                     </div>
 
                     <button className="pildora" type="submit" disabled={enviando}>
-                        {enviando ? 'Entrando…' : 'Entrar →'}
+                        {enviando ? 'Iniciando sesión…' : 'Iniciar sesión →'}
                     </button>
 
                     {error && <p className="mensaje-error">{error}</p>}

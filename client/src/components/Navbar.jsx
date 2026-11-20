@@ -45,7 +45,7 @@ export default function Navbar() {
                         </>
                     ) : (
                         <>
-                            <Link className="enlace-sesion" to="/login" onClick={cerrarMenu}>Entrar</Link>
+                            <Link className="enlace-sesion" to="/login" onClick={cerrarMenu}>Iniciar sesión</Link>
                             <Link className="enlace-sesion" to="/registro" onClick={cerrarMenu}>Registro</Link>
                         </>
                     )}
@@ -89,7 +89,7 @@ export default function Navbar() {
                     </>
                 ) : (
                     <>
-                        <Link to="/login" onClick={cerrarMenu}>Entrar</Link>
+                        <Link to="/login" onClick={cerrarMenu}>Iniciar sesión</Link>
                         <Link to="/registro" onClick={cerrarMenu}>Registro</Link>
                     </>
                 )}
