@@ -8,7 +8,8 @@
     "start": "node src/server.js",
     "test": "node --test",
     "crear:admin": "node scripts/crearAdmin.js",
-    "verificar:db": "node scripts/verificarConexion.js"
+    "verificar:db": "node scripts/verificarConexion.js",
+    "sembrar:proyectos": "node scripts/sembrarProyectos.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

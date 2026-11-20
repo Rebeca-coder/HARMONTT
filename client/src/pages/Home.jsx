@@ -1,33 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Buscador from '../components/Buscador.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
+import { api } from '../services/api.js';
 import { rutaImagen } from '../services/imagen.js';
-
-// Datos provisionales para maquetar. En la FASE 5 vendrán de la API.
-const proyectos = [
-    {
-        imagen: rutaImagen('/img/proyecto-marketing.jpg'),
-        etiqueta: 'Marketing · Simulado',
-        meta: '4 semanas · Remoto · Harmont selecciona',
-        titulo: 'Estrategia de marketing para una marca ficticia',
-        descripcion: 'Diseña una estrategia completa de lanzamiento y presenta tus entregables.',
-    },
-    {
-        imagen: rutaImagen('/img/proyecto-datos.jpg'),
-        etiqueta: 'Datos · Voluntario',
-        meta: '6 semanas · Híbrido · Harmont selecciona',
-        titulo: 'Dashboard de impacto para una organización social',
-        descripcion: 'Convierte datos reales en un panel claro para medir resultados.',
-    },
-    {
-        imagen: rutaImagen('/img/proyecto-diseno.jpg'),
-        etiqueta: 'Diseño · Remunerado',
-        meta: '3 semanas · Remoto · Harmont selecciona',
-        titulo: 'Rediseño de la experiencia de usuario',
-        descripcion: 'Investiga, propón mejoras y entrega un prototipo justificado.',
-    },
-];
+import { aTarjeta } from '../services/tarjetaProyecto.js';
 
 export default function Home() {
     const location = useLocation();
@@ -39,6 +16,28 @@ export default function Home() {
             document.getElementById(seccion)?.scrollIntoView({ behavior: 'smooth' });
         }
     }, [location.state]);
+
+    const [destacados, setDestacados] = useState([]);
+    const [cargandoDestacados, setCargandoDestacados] = useState(true);
+    const [errorDestacados, setErrorDestacados] = useState('');
+
+    // La portada muestra los mismos proyectos publicados que el catálogo.
+    useEffect(() => {
+        let cancelado = false;
+
+        api.get('/proyectos?limite=3')
+            .then((datos) => {
+                if (!cancelado) setDestacados(datos.proyectos || []);
+            })
+            .catch((fallo) => {
+                if (!cancelado) setErrorDestacados(fallo.message);
+            })
+            .finally(() => {
+                if (!cancelado) setCargandoDestacados(false);
+            });
+
+        return () => { cancelado = true; };
+    }, []);
 
     const irASeccion = (id) => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -109,9 +108,15 @@ export default function Home() {
                     <Link className="enlace-con-flecha" to="/proyectos">Ver todos los proyectos →</Link>
                 </div>
 
+                {cargandoDestacados && <p className="aviso">Cargando proyectos desde la API…</p>}
+                {errorDestacados && <p className="mensaje-error">{errorDestacados}</p>}
+                {!cargandoDestacados && !errorDestacados && destacados.length === 0 && (
+                    <p className="aviso">Todavía no hay proyectos publicados.</p>
+                )}
+
                 <div className="lista-tarjetas">
-                    {proyectos.map((proyecto) => (
-                        <ProjectCard key={proyecto.titulo} {...proyecto} />
+                    {destacados.map((proyecto) => (
+                        <ProjectCard key={proyecto.id} {...proyecto} />
                     ))}
                 </div>
             </section>

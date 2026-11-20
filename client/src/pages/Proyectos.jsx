@@ -3,18 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import Buscador from '../components/Buscador.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
 import { api } from '../services/api.js';
-import { rutaImagen } from '../services/imagen.js';
-
-function aTarjeta(proyecto) {
-    return {
-        id: proyecto.id,
-        imagen: rutaImagen(proyecto.imagen),
-        etiqueta: `${proyecto.categoria} · ${proyecto.origen === 'simulado' ? 'Simulado' : proyecto.tipoEconomico}`,
-        meta: `${proyecto.duracionSemanas || '—'} semanas · ${proyecto.modalidad} · ${proyecto.empresa}`,
-        titulo: proyecto.nombre,
-        descripcion: proyecto.descripcion,
-    };
-}
+import { aTarjeta } from '../services/tarjetaProyecto.js';
 
 export default function Proyectos() {
     const [parametros, setParametros] = useSearchParams();
