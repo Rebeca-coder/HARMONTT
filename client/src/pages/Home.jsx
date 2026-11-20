@@ -116,7 +116,7 @@ export default function Home() {
 
                 <div className="lista-tarjetas">
                     {destacados.map((proyecto) => (
-                        <ProjectCard key={proyecto.id} {...proyecto} />
+                        <ProjectCard key={proyecto.id} {...aTarjeta(proyecto)} />
                     ))}
                 </div>
             </section>
